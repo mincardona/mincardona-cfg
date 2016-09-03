@@ -1,0 +1,10 @@
+# BEGIN SECTION custom
+
+bind '"\t":menu-complete'
+
+mkcd() {
+    mkdir $1;
+    cd $1;
+}
+
+# END SECTION custom

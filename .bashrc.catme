@@ -7,4 +7,14 @@ mkcd() {
     cd $1;
 }
 
+cdls() {
+    cd $1;
+    echo $(ls);
+}
+
+cdla() {
+    cd $1;
+    echo $(ls -al);
+}
+
 # END SECTION custom

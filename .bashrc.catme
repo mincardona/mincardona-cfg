@@ -17,4 +17,6 @@ cdla() {
     echo $(ls -al);
 }
 
+alias temacs='emacs -nw'
+
 # END SECTION custom

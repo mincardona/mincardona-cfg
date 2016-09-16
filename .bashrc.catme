@@ -19,4 +19,10 @@ cdla() {
 
 alias temacs='emacs -nw'
 
+alias ping4='ping -c 4'
+
+math() {
+    echo "$1" | bc -l;
+}
+
 # END SECTION custom

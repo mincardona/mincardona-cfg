@@ -25,3 +25,4 @@
 (setq-default slime-lisp-implementations
         '((clisp ("/usr/bin/clisp") ))
     )
+    

@@ -14,7 +14,7 @@ cdls() {
 
 cdla() {
     cd $1;
-    echo $(ls -al);
+    echo "$(ls -al)";
 }
 
 alias temacs='emacs -nw'

@@ -25,4 +25,10 @@ math() {
     echo "$1" | bc -l;
 }
 
+# ls aliases
+#alias l='ls -F'
+#alias la='ls -FA'
+#alias ll='ls -Fl'
+#alias lla='ls -Fla'
+
 # END SECTION custom

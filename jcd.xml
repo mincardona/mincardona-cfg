@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ Copyright (C) 2016 Michael Incardona
+ Author: Michael Incardona <michael.incardona@outlook.com>
+
+ This library is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Library General Public
+ License as published by the Free Software Foundation; either
+ version 2 of the License, or (at your option) any later version.
+
+ This library is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Library General Public License for more details.
+
+ You should have received a copy of the GNU Library General Public
+ License along with this library; if not, write to the
+ Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+ Boston, MA 02111-1307, USA.
+
+-->
+
+<style-scheme id="j" _name="j" version="1.0">
+
+    <author>Michael Incardona</author>
+    <_description>Minimal light theme based on blue and purple</_description>
+
+    <!-- Palette -->
+    <color name="white"                       value="#FFFFFF"/>
+    <color name="turq"                        value="#3F7F5F"/>
+    <color name="black"                       value="#000000"/>
+    <color name="lblue"                       value="#7f9fbf"/>
+    <color name="deepblue"                    value="#2a00ff"/>
+    <color name="redpurple"                   value="#6a3e3e"/>
+    <color name="deeppurple"                  value="#7f0055"/>
+    <color name="dgray"			              value="#646464"/>
+    <color name="mgray"			            value="#bbbbbb"/>
+    <color name="lgray"			            value="#eeeeec"/>
+    <color name="doc"                       value="#7f7f9f"/>
+
+    <!-- Global Settings -->
+    <style name="text"                        background="white" foreground="black"/>
+    <style name="selection"                   background="mgray" foreground="black"/>
+    <style name="selection-unfocused"         background="dgray" foreground="white"/>
+    <style name="cursor"                      foreground="black"/>
+    <style name="current-line"                background="lgray"/>
+    <style name="search-match"                background="yellow"/>
+    <style name="line-numbers"                foreground="dgray" background="lgray"/>
+
+    <!-- Bracket Matching -->
+    <style name="bracket-match"               foreground="black" background="lblue"/>
+    <style name="bracket-mismatch"            foreground="white" background="#red"/>
+
+    <!-- Comments -->
+    <style name="def:comment"                 foreground="turq"/>
+    <style name="def:doc-comment-element"     foreground="lblue" bold="true"/>
+    <style name="def:doc-comment"             foreground="doc"/>
+    <!-- <style name="def:sheband"                 foreground="red1" bold="true"/> -->
+    <style name="def:shebang"                 bold="true"/>
+
+    <!-- Constants -->
+    <style name="def:string"                  foreground="deepblue"/>
+    <style name="def:character"               foreground="deepblue"/>
+    <style name="def:special-char"            foreground="turq" bold="true"/>
+    <!-- <style name="def:constant"			foreground="deepblue"/> -->
+    <style name="def:special-constant"        foreground="deeppurple" bold="true"/>
+    <style name="def:boolean"                 foreground="deeppurple" bold="true"/>
+    <!-- <style name="def:floating-point"          foreground="#red"/> -->
+
+    <!-- Identifiers -->
+    <style name="def:identifier"              foreground="redpurple"/>
+
+    <!-- Statements -->
+    <!-- <style name="def:statement"               foreground="lblue" bold="true"/> -->
+
+    <!-- Types -->
+    <style name="def:type"                    foreground="deeppurple" bold="true"/>
+
+    <!-- Others -->
+    <style name="def:keyword"                 foreground="deeppurple" bold="true"/>
+    <style name="def:reserved"                 foreground="deeppurple" bold="true"/> 
+    <style name="def:preprocessor"            foreground="deeppurple"/>
+
+    <!-- <style name="def:error"                   foreground="" background=""/> -->
+
+    <style name="def:underlined"              italic="true" underline="true"/>
+
+    <!-- Language specific styles -->
+
+    <style name="latex:display-math"          foreground="#slate blue" bold="false"/>
+    <style name="sh:variable"                 foreground="redpurple"/>
+ 
+</style-scheme>

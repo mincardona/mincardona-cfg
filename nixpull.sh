@@ -3,6 +3,7 @@ cp ".bash_aliases" ~
 cp ".vimrc" ~
 cp ".nanorc" ~
 cp ".emacs" ~
-cp "jcd.xml" ~/.local/share/gtksourceview-3.0/styles
+mkdir --parents ~/.local/share/gtksourceview-3.0/styles
+cp "jcd.xml" ~/.local/share/gtksourceview-3.0/styles/
 source ~/.bashrc
 

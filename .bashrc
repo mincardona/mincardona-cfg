@@ -122,6 +122,7 @@ fi
 # --------------------------- BEGIN SECTION custom -----------------------------
 
 bind '"\t":menu-complete'
+bind '"\e[Z":menu-complete-backward'
 
 PATH="/home/michael/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="/home/michael/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;

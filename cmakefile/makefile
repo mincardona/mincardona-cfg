@@ -16,7 +16,7 @@ OUTFILE=
 all: $(OUTFILE)
 
 $(OUTFILE): $(OBJECTS) $(HEADERS)
-	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
+	$(CC) $(OBJECTS) $(LDFLAGS) -o $@
 
 %.o : %.c
 	$(CC) $(CFLAGS) $< -o $@

@@ -39,6 +39,8 @@
     <color name="lgray"			            value="#eeeeec"/>
     <color name="doc"                       value="#7f7f9f"/>
 
+    <!-- Doc – VioletRed4 #8b2252 -->
+
     <!-- Global Settings -->
     <style name="text"                        background="white" foreground="black"/>
     <style name="selection"                   background="mgray" foreground="black"/>

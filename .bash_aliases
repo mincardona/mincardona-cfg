@@ -31,3 +31,4 @@ math() {
     echo "$1" | bc -l;
 }
 
+alias arpclear='ip -s -s neigh flush all'

@@ -31,4 +31,5 @@ math() {
     echo "$1" | bc -l;
 }
 
+alias sudo='sudo '
 alias arpclear='ip -s -s neigh flush all'

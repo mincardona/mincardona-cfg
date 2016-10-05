@@ -33,3 +33,10 @@ math() {
 
 alias sudo='sudo '
 alias arpclear='ip -s -s neigh flush all'
+
+alias pls='sudo '
+alias please='sudo '
+alias pl0x='sudo '
+alias plox='sudo '
+
+alias killfire='kill -9'

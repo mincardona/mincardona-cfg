@@ -81,8 +81,8 @@
 
     <!-- Others -->
     <style name="def:keyword"                 foreground="deeppurple" bold="true"/>
-    <style name="def:reserved"                 foreground="deeppurple" bold="true"/> 
-    <style name="def:preprocessor"            foreground="deeppurple"/>
+    <style name="def:reserved"                foreground="deeppurple" bold="true"/> 
+    <style name="def:preprocessor"            foreground="deeppurple" bold="true"/>
 
     <!-- <style name="def:error"                   foreground="" background=""/> -->
 

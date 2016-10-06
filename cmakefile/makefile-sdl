@@ -4,7 +4,7 @@ CFLAGS_SDL=$(shell sdl2-config --cflags)
 # add e.g. -lSDL2_net to the end of LDFLAGS_SDL
 LDFLAGS_SDL=$(shell sdl2-config --libs)
 # compiler flags
-CFLAGS=-c -std=c99 -Wall -Wpedantic
+CFLAGS=-c -std=c99 -Wall -Wpedantic -Wextra
 override CFLAGS+=$(CFLAGS_SDL)
 # linker flags
 LDFLAGS=

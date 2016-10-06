@@ -1,7 +1,7 @@
 # compiler/linker executable
 CC=gcc
 # compiler flags
-CFLAGS=-c -std=c99 -Wall -Wpedantic
+CFLAGS=-c -std=c99 -Wall -Wpedantic -Wextra
 # linker flags
 LDFLAGS=
 # header files (.h)

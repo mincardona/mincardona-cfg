@@ -1,7 +1,7 @@
 # compiler/linker executable
 CC=g++
 # compiler flags
-CFLAGS=-c -std=c++11 -Wall -Wpedantic
+CFLAGS=-c -std=c++11 -Wall -Wpedantic -Wextra
 # header files (.h, .hpp)
 HEADERS=
 # source files (.cpp)

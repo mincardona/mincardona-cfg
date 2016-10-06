@@ -1,3 +1,4 @@
+#!/bin/bash
 # requires dconf-cli package
 
 if [[ "$#" -ne 2 ]]
@@ -5,6 +6,7 @@ then
     echo "Usage: dconf-term COMMAND FILE"
     echo "A single dash ( - ) can be used to refer \
 to stdin or stdout, where appropriate"
+    echo "COMMAND is either \"import\" or \"export\""
 fi
 
 if [[ "$1" = "import" ]]

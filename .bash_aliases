@@ -9,6 +9,8 @@ alias la='ls -FA'
 alias ll='ls -Fl'
 alias lla='ls -Fla'
 
+alias lg='git status'
+
 alias temacs='emacs -nw'
 alias ping4='ping -c 4'
 

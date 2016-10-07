@@ -21,7 +21,7 @@
 
 -->
 
-<style-scheme id="j" _name="j" version="1.0">
+<style-scheme id="jcd" _name="jcd" version="1.0">
 
     <author>Michael Incardona</author>
     <_description>Minimal light theme based on blue and purple</_description>
@@ -35,9 +35,9 @@
     <color name="redpurple"                   value="#6a3e3e"/>
     <color name="deeppurple"                  value="#7f0055"/>
     <color name="dgray"			              value="#646464"/>
-    <color name="mgray"			            value="#bbbbbb"/>
-    <color name="lgray"			            value="#eeeeec"/>
-    <color name="doc"                       value="#7f7f9f"/>
+    <color name="mgray"			              value="#bbbbbb"/>
+    <color name="lgray"			              value="#eeeeec"/>
+    <color name="doc"                         value="#7f7f9f"/>
 
     <!-- Doc – VioletRed4 #8b2252 -->
 
@@ -92,5 +92,6 @@
 
     <style name="latex:display-math"          foreground="#slate blue" bold="false"/>
     <style name="sh:variable"                 foreground="redpurple"/>
- 
+    <style name="c:included-file"             foreground="deepblue" bold="false"/>
+
 </style-scheme>

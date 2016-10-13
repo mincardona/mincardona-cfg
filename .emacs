@@ -8,7 +8,7 @@
 (package-initialize)
 
 ;;
-;; whitespace stuff
+;; whitespace and indentation stuff
 ;;
 
 (defvar my-indent 4 "My indentation offset.")
@@ -16,14 +16,15 @@
 (setq-default indent-tabs-mode nil)
 (setq-default tab-always-indent nil)
 (setq-default tab-width my-indent)
-(global-set-key (kbd "TAB") 'tab-to-tab-stop)
 (defvaralias 'c-basic-offset 'my-indent)
 (defvaralias 'cperl-indent-level 'my-indent)
-;(setq-default c-hungry-delete-key t)
 
 (electric-indent-mode -1)
 (setq-default electric-indent-inhibit t)
 
+(global-set-key (kbd "TAB") 'tab-to-tab-stop)
+
+; Retains indent level on newline
 (defun newline-preserve-indent ()
     "Insert a newline after point with the same indentation as the current line."
     (interactive)
@@ -36,23 +37,20 @@
 )
 (global-set-key (kbd "RET") 'newline-preserve-indent)
 
-; TODO: smart backspace
+; Deletes groups of spaces if on a tabstop
 (defun smart-del ()
-    "Deletes whitespace until tab stop, or just the last character."
+    "Deletes 4 spaces back when on a tabstop, or just the last character."
     (interactive)
-    (if (bolp)
-        (delete-backward-char)
+    (if (or (bolp) (/= 0 (% (current-column) my-indent)))
+        (delete-backward-char 1)
     ;else
-        (if (= 0 (% (current-column) my-indent))
-            (setq last-tabstop (- (current-column) 4))
-        ;else
-            (setq last-tabstop (/ (current-column) 4))
-        )
-        (string-match "[ \t]*" (thing-at-point 'line t) last-tabstop)
-        (if (>= (match-end 0) (current-column))
-            (delete-backward-char (- (match-end 0) last-tabstop))
+        (setq last-tabstop (- (current-column) my-indent))
+        (if (and (string-match "[ \t]*" (thing-at-point 'line t) last-tabstop) 
+                 (>= (match-end 0) (current-column))
+            )
+            (delete-backward-char (- (current-column) last-tabstop))
         ; else
-            (delete-backward-char)
+            (delete-backward-char 1)
         )
     )
 )

@@ -5,3 +5,5 @@ set backspace=indent,eol,start
 
 set guifont=Monospace\ 10
 
+set whichwrap+=<,>,h,l,[,]
+

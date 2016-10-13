@@ -7,5 +7,7 @@ set guifont=Monospace\ 10
 
 set whichwrap+=<,>,h,l,[,]
 
-let g:VM_Enabled=1
+" let g:VM_Enabled=1
+
+" set insertmode
 

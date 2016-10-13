@@ -17,8 +17,11 @@
 (setq-default tab-always-indent nil)
 (setq-default tab-width my-offset)
 (global-set-key (kbd "TAB") 'tab-to-tab-stop)
+(defvaralias 'c-basic-offset 'my-offset)
+(defvaralias 'cperl-indent-level 'my-offset)
+;(setq-default c-hungry-delete-key t)
 
-(electric-indent-mode -1)
+;(electric-indent-mode -1)
 ;; is this even effective?
 (setq-default electric-indent-inhibit t)
 
@@ -27,8 +30,7 @@
 ; causes issues
 ;(setq-default indent-line-function 'tab-to-tab-stop)
 
-; smart backspace indentation
-(global-set-key (kbd "DEL") 'backspace-whitespace-to-tab-stop)
+; smart backspace indentation - doesn't work?
 (defun backspace-whitespace-to-tab-stop ()
   "Delete whitespace backwards to the next tab-stop, otherwise delete one character."
   (interactive)
@@ -47,6 +49,7 @@
         (if (string-match "[^\t ]*\\([\t ]+\\)$" (buffer-substring-no-properties (- p movement) p))
             (backward-delete-char (- (match-end 1) (match-beginning 1)))
           (call-interactively 'backward-delete-char))))))
+(global-set-key (kbd "DEL") 'backspace-whitespace-to-tab-stop)
 
 ;;
 ;; general settings

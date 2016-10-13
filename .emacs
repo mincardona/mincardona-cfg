@@ -17,10 +17,16 @@
 (setq-default tab-always-indent nil)
 (setq-default tab-width my-offset)
 (global-set-key (kbd "TAB") 'tab-to-tab-stop)
+
 (electric-indent-mode -1)
-;(setq-default electric-indent-inhibit t)
+;; is this even effective?
+(setq-default electric-indent-inhibit t)
+
 (global-set-key (kbd "RET") 'newline-and-indent)
-(setq-default indent-line-function 'tab-to-tab-stop)
+
+; causes issues
+;(setq-default indent-line-function 'tab-to-tab-stop)
+
 ; smart backspace indentation
 (global-set-key (kbd "DEL") 'backspace-whitespace-to-tab-stop)
 (defun backspace-whitespace-to-tab-stop ()
@@ -48,6 +54,7 @@
 
 (global-set-key (kbd "M-/") 'hippie-expand)
 (setq-default delete-trailing-lines nil)
+(setq auto-save-default nil)
 (setq-default make-backup-files nil)
 ;(setq-default cursor-type '(bar . 1))
 (setq-default cursor-type 'bar)

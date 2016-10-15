@@ -22,45 +22,10 @@
 (electric-indent-mode -1)
 (setq-default electric-indent-inhibit t)
 
-(global-set-key (kbd "TAB") 'tab-to-tab-stop)
-
-; Retains indent level on newline
-(defun newline-preserve-indent ()
-    "Insert a newline after point with the same indentation as the current line."
-    (interactive)
-    (progn
-     (setq srcstr (thing-at-point 'line t))
-     (newline)
-     (string-match "^[ \t]*" srcstr)
-     (insert (substring srcstr 0 (match-end 0)))
-    )
-)
-(global-set-key (kbd "RET") 'newline-preserve-indent)
-
-; Deletes groups of spaces if on a tabstop
-(defun smart-del ()
-    "Deletes 4 spaces back when on a tabstop, or just the last character."
-    (interactive)
-    (if (or (bolp) (/= 0 (% (current-column) my-indent)))
-        (delete-backward-char 1)
-    ;else
-        (setq last-tabstop (- (current-column) my-indent))
-        (if (and (string-match "[ \t]*" (thing-at-point 'line t) last-tabstop) 
-                 (>= (match-end 0) (current-column))
-            )
-            (delete-backward-char (- (current-column) last-tabstop))
-        ; else
-            (delete-backward-char 1)
-        )
-    )
-)
-(global-set-key [backspace] 'smart-del)
-
 ;;
 ;; general settings
 ;;
 
-(global-set-key (kbd "M-/") 'hippie-expand)
 (setq-default delete-trailing-lines nil)
 (setq auto-save-default nil)
 (setq-default make-backup-files nil)
@@ -79,6 +44,63 @@
 (setq-default slime-lisp-implementations
         '((clisp ("/usr/bin/clisp") ))
     )
+
+;; 
+;; Minor mode
+;; 
+
+(global-set-key (kbd "TAB") 'tab-to-tab-stop)
+
+; Retains indent level on newline
+(defun newline-preserve-indent ()
+    "Insert a newline after point with the same indentation as the current line."
+    (interactive)
+    (progn
+     (setq srcstr (thing-at-point 'line t))
+     (newline)
+     (string-match "^[ \t]*" srcstr)
+     (insert (substring srcstr 0 (match-end 0)))
+    )
+)
+
+; Deletes groups of spaces if on a tabstop
+(defun smart-del ()
+    "Deletes 4 spaces back when on a tabstop, or just the last character."
+    (interactive)
+    (if (or (bolp) (/= 0 (% (current-column) my-indent)))
+        (delete-backward-char 1)
+    ;else
+        (setq last-tabstop (- (current-column) my-indent))
+        (if (and (string-match "[ \t]*" (thing-at-point 'line t) last-tabstop) 
+                 (>= (match-end 0) (current-column))
+            )
+            (delete-backward-char (- (current-column) last-tabstop))
+        ; else
+            (delete-backward-char 1)
+        )
+    )
+)
+
+(defvar my-keys-minor-mode-map
+    (let ((map (make-sparse-keymap)))
+        (define-key map (kbd "RET") 'newline-preserve-indent)
+        (define-key map [backspace] 'smart-del)
+        (define-key map "\d" 'smart-del)
+        (define-key map (kbd "M-/") 'hippie-expand)
+        map)
+      "my-keys-minor-mode keymap.")
+      
+(define-minor-mode my-keys-minor-mode
+  "A minor mode so that my key settings override annoying major modes."
+  :init-value t
+  :lighter " my-keys")
+
+(my-keys-minor-mode 1)
+
+(defun my-minibuffer-setup-hook ()
+    (my-keys-minor-mode 0))
+
+(add-hook 'minibuffer-setup-hook 'my-minibuffer-setup-hook)
 
 ;;
 ;; Emacs custom set

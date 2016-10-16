@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# run a command or program in a totally separate process which 
+# is not dependent on the calling shell
+
 if test -t 1; then
   exec 1>/dev/null
 fi

@@ -97,10 +97,12 @@
 
 (my-keys-minor-mode 1)
 
-(defun my-minibuffer-setup-hook ()
+(defun my-minor-off-hook ()
     (my-keys-minor-mode 0))
 
-(add-hook 'minibuffer-setup-hook 'my-minibuffer-setup-hook)
+(add-hook 'minibuffer-setup-hook 'my-minor-off-hook)
+
+(add-hook 'term-mode-hook 'my-minor-off-hook)
 
 ;;
 ;; Emacs custom set

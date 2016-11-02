@@ -11,6 +11,7 @@ cp ".nanorc" ~
 cp ".emacs" ~
 mkdir --parents ~/.local/share/gtksourceview-3.0/styles
 cp "jcd.xml" ~/.local/share/gtksourceview-3.0/styles/
+cp ./templates/* ~/Templates/
 
 #unzip -o vimacs-master.zip
 #mkdir -p $HOME/.vim/doc

@@ -58,13 +58,25 @@ fi
 
 if [ "$color_prompt" = yes ]; then
     if [[ ${EUID} == 0 ]] ; then
-        PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\h \[\033[01;34m\]\W \$\[\033[00m\] '
+        PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\h \[\033[01;34m\]\W\n\$\[\033[00m\] '
     else
-        PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\w \$\[\033[00m\] '
+        PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\w\n\$\[\033[00m\] '
     fi
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h \w \$ '
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h \w\n\$ '
 fi
+
+# this prompt displays the current directory basename on one line
+#if [ "$color_prompt" = yes ]; then
+#    if [[ ${EUID} == 0 ]] ; then
+#        PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\h \[\033[01;34m\]\W \$\[\033[00m\] '
+#    else
+#        PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\W \$\[\033[00m\] '
+#    fi
+#else
+#    PS1='${debian_chroot:+($debian_chroot)}\u@\h \W \$ '
+#fi
+
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir

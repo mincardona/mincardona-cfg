@@ -4,14 +4,14 @@ echo "performing standard ops..."
 
 SHDIR=sh
 
-cp ".bashrc" ~
-cp ".bash_aliases" ~
-cp ".vimrc" ~
-cp ".nanorc" ~
-cp ".emacs" ~
+cp --preserve ".bashrc" ~
+cp --preserve ".bash_aliases" ~
+cp --preserve ".vimrc" ~
+cp --preserve ".nanorc" ~
+cp --preserve ".emacs" ~
 mkdir --parents ~/.local/share/gtksourceview-3.0/styles
-cp "jcd.xml" ~/.local/share/gtksourceview-3.0/styles/
-cp ./templates/* ~/Templates/
+cp --preserve "jcd.xml" ~/.local/share/gtksourceview-3.0/styles/
+cp --preserve ./templates/* ~/Templates/
 
 #unzip -o vimacs-master.zip
 #mkdir -p $HOME/.vim/doc
@@ -23,8 +23,8 @@ cp ./templates/* ~/Templates/
 if [[ "$EUID" = 0 ]];
 then
     echo "performing root ops..."
-    cp "$SHDIR/spinoff" /usr/local/bin/
-    cp "$SHDIR/ritnetreg" /usr/local/bin/
+    cp --preserve "$SHDIR/spinoff" /usr/local/bin/
+    cp --preserve "$SHDIR/ritnetreg" /usr/local/bin/
 fi
 
 echo "done."

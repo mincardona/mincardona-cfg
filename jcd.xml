@@ -38,6 +38,7 @@
     <color name="mgray"			              value="#bbbbbb"/>
     <color name="lgray"			              value="#eeeeec"/>
     <color name="doc"                         value="#7f7f9f"/>
+    <color name="sea"                         value="#1A5043"/>
 
     <!-- Doc – VioletRed4 #8b2252 -->
 
@@ -93,5 +94,7 @@
     <style name="latex:display-math"          foreground="#slate blue" bold="false"/>
     <style name="sh:variable"                 foreground="redpurple"/>
     <style name="c:included-file"             foreground="deepblue" bold="false"/>
+    <style name="perl:variable"               foreground="redpurple" bold="false"/>
+    <style name="perl:operator"               foreground="black" bold="false"/>
 
 </style-scheme>

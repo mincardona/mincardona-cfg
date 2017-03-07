@@ -67,15 +67,21 @@
 (defun smart-del ()
     "Deletes 4 spaces back when on a tabstop, or just the last character."
     (interactive)
-    (if (or (bolp) (/= 0 (% (current-column) my-indent)))
+    ; if current column is at beginning of line or on a tab stop,
+    ; or if the previous character is "\t"
+    (if (or (bolp) (/= 0 (% (current-column) my-indent)) 
+            (string= (string (char-before)) "\t")
+    )
+    ;then
         (delete-backward-char 1)
     ;else
         (setq last-tabstop (- (current-column) my-indent))
         (if (and (string-match "[ \t]*" (thing-at-point 'line t) last-tabstop) 
                  (>= (match-end 0) (current-column))
             )
+        ;then
             (delete-backward-char (- (current-column) last-tabstop))
-        ; else
+        ;else
             (delete-backward-char 1)
         )
     )

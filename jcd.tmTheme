@@ -7,13 +7,13 @@
 <plist version="1.0">
 <dict>
 	<key>author</key>
-	<string>Jan T. Sott</string>
+	<string>Michael Incardona</string>
 	<key>name</key>
-	<string>3024 day</string>
+	<string>JCD</string>
 	<key>comment</key>
-	<string>https:&#x2f;&#x2f;github.com&#x2f;idleberg&#x2f;3024.tmTheme</string>
+	<string>A light theme</string>
 	<key>semanticClass</key>
-	<string>theme.light.3024_day</string>
+	<string>theme.light.jcd</string>
 	<key>colorSpaceName</key>
 	<string>sRGB</string>
 	<key>gutterSettings</key>
@@ -471,13 +471,13 @@ constant.other.placeholder.c</string>
 			<key>name</key>
 			<string>Invalid</string>
 			<key>scope</key>
-			<string>invalid.illegal</string>
+			<string>invalid.illegal, invalid.illegal.expected-dictionary-separator.json</string>
 			<key>settings</key>
 			<dict>
 				<key>background</key>
 				<string>#db2d20</string>
 				<key>foreground</key>
-				<string>#f7f7f7</string>
+				<string>#ffffff</string>
 			</dict>
 		</dict>
 		<dict>

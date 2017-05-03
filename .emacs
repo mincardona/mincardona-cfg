@@ -26,6 +26,7 @@
 ;; general settings
 ;;
 
+(setq-default require-final-newline t)
 (setq-default delete-trailing-lines nil)
 (setq auto-save-default nil)
 (setq-default make-backup-files nil)

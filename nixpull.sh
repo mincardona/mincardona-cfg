@@ -30,6 +30,7 @@ then
     echo "performing root ops..."
     cp --preserve "$SHDIR/spinoff" /usr/local/bin/
     cp --preserve "$SHDIR/ritnetreg" /usr/local/bin/
+    cp --preserve "$SHDIR/git-cpm" /usr/local/bin/
 fi
 
 echo "done."

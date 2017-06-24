@@ -1,6 +1,5 @@
 {
 	"auto_complete": false,
-	"auto_match_enabled": true,
 	"color_scheme": "Packages/Custom Color Schemes/jcd.tmTheme",
 	"copy_with_empty_selection": false,
 	"ensure_newline_at_eof_on_save": true,
@@ -15,7 +14,13 @@
 	[
 		80
 	],
+
 	"shift_tab_unindent": true,
+    "translate_tabs_to_spaces": true,
+    "tabSize": 4,
+    "use_tab_stops": true,
+    "detect_indentation": false,
+
 	"show_encoding": true,
 	"show_line_endings": true,
 	"tab_completion": false,
@@ -23,6 +28,11 @@
 	"theme_accent_color_42": true,
 	"theme_default_selection_color": true,
 	"theme_lightgray_sidebar": true,
-	"translate_tabs_to_spaces": true,
-	"trim_trailing_white_space_on_save": true
+	"trim_trailing_white_space_on_save": true,
+
+	"margin": 1,
+	"auto_match_enabled": false,
+	"highlight_modified_tabs": true,
+	"show_full_path": false,
+    "fold_buttons": true
 }

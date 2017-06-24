@@ -26,24 +26,13 @@
 ;; general settings
 ;;
 
+(setq-default require-final-newline t)
 (setq-default delete-trailing-lines nil)
 (setq auto-save-default nil)
 (setq-default make-backup-files nil)
 ;(setq-default cursor-type '(bar . 1))
-(setq-default cursor-type 'bar)
+(setq-default cursor-type 'box)
 (setq-default blink-cursor-blinks 0)
-
-;;
-;; lisp system
-;;
-
-; Set your lisp system and, optionally, some contribs
-(setq-default inferior-lisp "/usr/bin/clisp")
-(setq-default inferior-lisp-program "/usr/bin/clisp")
-(setq-default slime-contribs '(slime-fancy))
-(setq-default slime-lisp-implementations
-        '((clisp ("/usr/bin/clisp") ))
-    )
 
 ;; 
 ;; Minor mode
@@ -67,21 +56,26 @@
 (defun smart-del ()
     "Deletes 4 spaces back when on a tabstop, or just the last character."
     (interactive)
-    ; if current column is at beginning of line or on a tab stop,
+    ; if current column is at beginning of line or not on a tab stop
     ; or if the previous character is "\t"
     (if (or (bolp) (/= 0 (% (current-column) my-indent)) 
             (string= (string (char-before)) "\t")
     )
+    
     ;then
         (delete-backward-char 1)
     ;else
+        ; we are on a non-zero tabstop, compute the previous tabstop
         (setq last-tabstop (- (current-column) my-indent))
+        ; if there are only spaces and/or tabs between the cursor and last tabstop
         (if (and (string-match "[ \t]*" (thing-at-point 'line t) last-tabstop) 
                  (>= (match-end 0) (current-column))
             )
         ;then
+            ; delete back to the tabstop
             (delete-backward-char (- (current-column) last-tabstop))
         ;else
+            ; there are non-whitespace char(s), just delete one
             (delete-backward-char 1)
         )
     )

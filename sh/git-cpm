@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [ "$#" -gt 0 ]; then
+    TARGET="$1"
+else
+    TARGET=$(git rev-parse --abbrev-ref HEAD)
+fi
+
+if [ "$TARGET" == "master" ]; then
+    git pull
+else
+    git checkout master && git pull && git checkout "$TARGET"
+fi

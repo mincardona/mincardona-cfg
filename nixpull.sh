@@ -23,6 +23,7 @@ cp --preserve ./templates/* ~/Templates/
 mkdir -p ~/.config/sublime-text-3/Packages/User/
 mkdir -p ~/.config/sublime-text-3/Packages/Custom\ Color\ Schemes/
 cp --preserve "Preferences.sublime-settings" ~/.config/sublime-text-3/Packages/User/
+cp --preserve "Default.sublime-keymap" ~/.config/sublime-text-3/Packages/User/
 cp --preserve "jcd.tmTheme" ~/.config/sublime-text-3/Packages/Custom\ Color\ Schemes/
 
 if [[ "$EUID" = 0 ]];

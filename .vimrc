@@ -11,3 +11,4 @@ set whichwrap+=<,>,h,l,[,]
 
 " set insertmode
 
+startinsert

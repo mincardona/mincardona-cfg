@@ -132,6 +132,7 @@ fi
 bind '"\t":menu-complete'
 bind '"\e[Z":menu-complete-backward'
 export PAGER='less'
+command -v git >/dev/null 2>&1 && command -v vim >/dev/null 2>&1 && git config --global core.editor vim
 
 if [ -f ~/.bash_perl5 ]; then
     . ~/.bash_perl5

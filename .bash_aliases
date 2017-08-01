@@ -40,5 +40,3 @@ alias pls='sudo '
 alias please='sudo '
 alias pl0x='sudo '
 alias plox='sudo '
-
-alias killfire='kill -9'

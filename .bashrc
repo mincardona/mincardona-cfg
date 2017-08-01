@@ -131,6 +131,7 @@ fi
 
 bind '"\t":menu-complete'
 bind '"\e[Z":menu-complete-backward'
+export PAGER='less'
 
 if [ -f ~/.bash_perl5 ]; then
     . ~/.bash_perl5

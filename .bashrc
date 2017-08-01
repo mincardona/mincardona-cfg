@@ -132,7 +132,11 @@ fi
 bind '"\t":menu-complete'
 bind '"\e[Z":menu-complete-backward'
 export PAGER='less'
-command -v git >/dev/null 2>&1 && command -v vim >/dev/null 2>&1 && git config --global core.editor vim
+
+if command -v git >/dev/null 2>&1; then
+    command -v vim >/dev/null 2>&1 && git config --global core.editor vim
+    git config --global alias.clrb "!git branch --merged master | grep -E -v '\*|\smaster' | xargs git branch -d"
+fi
 
 if [ -f ~/.bash_perl5 ]; then
     . ~/.bash_perl5

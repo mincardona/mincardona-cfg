@@ -21,12 +21,12 @@ mkcd() {
 
 cdls() {
     cd $1;
-    echo "$(ls -F)";
+    echo "$(ls -Fh)";
 }
 
 cdla() {
     cd $1;
-    echo "$(ls -alF)";
+    echo "$(ls -alFh)";
 }
 
 math() {

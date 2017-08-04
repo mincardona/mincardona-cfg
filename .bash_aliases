@@ -4,10 +4,10 @@
 #alias l='ls -CF'
 
 # ls aliases
-alias l='ls -F'
-alias la='ls -FA'
-alias ll='ls -Fl'
-alias lla='ls -Fla'
+alias l='ls -Fh'
+alias la='ls -FAh'
+alias ll='ls -Flh'
+alias lla='ls -Flah'
 
 alias lg='git status'
 

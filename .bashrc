@@ -141,3 +141,7 @@ fi
 if [ -f ~/.bash_perl5 ]; then
     . ~/.bash_perl5
 fi
+
+if [ -f ~/.bash_platform ]; then
+    . ~/.bash_platform
+fi

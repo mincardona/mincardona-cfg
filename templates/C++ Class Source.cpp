@@ -13,7 +13,7 @@ Foo::Foo()
 // member swap
 friend void Foo::swap(Foo& first, Foo& second) noexcept {
     using std::swap;
-    
+
     // swap(first->member, second->member);
 }
 
@@ -46,4 +46,3 @@ Foo& Foo::operator=(Foo other)
     swap(*this, other);
     return *this;
 }
-

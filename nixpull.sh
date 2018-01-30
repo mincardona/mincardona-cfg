@@ -1,13 +1,23 @@
 #!/bin/bash
 
+# bash
 cp --preserve "bash/.bashrc" ~
 cp --preserve "bash/.bash_aliases" ~
+
+# vim
 cp --preserve "vim/.vimrc" ~
+
+# nano
 cp --preserve "nano/.nanorc" ~
+
+# emacs
 cp --preserve "emacs/.emacs" ~
+
+# gtksourceview
 mkdir --parents ~/.local/share/gtksourceview-3.0/styles
 cp --preserve "gtksourceview/jcd.xml" ~/.local/share/gtksourceview-3.0/styles/
 
+# templates
 if [ -d "~/Templates" ]; then
     cp --preserve ./templates/* ~/Templates/
 fi

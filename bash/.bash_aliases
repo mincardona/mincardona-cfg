@@ -19,26 +19,12 @@ mkcd() {
     cd $1;
 }
 
-cdls() {
-    cd $1;
-    echo "$(ls -F)";
-}
-
-cdla() {
-    cd $1;
-    echo "$(ls -alF)";
-}
-
 math() {
     echo "$1" | bc -l;
 }
 
 alias sudo='sudo '
-alias arpclear='ip -s -s neigh flush all'
 
 alias pls='sudo '
 alias please='sudo '
-alias pl0x='sudo '
 alias plox='sudo '
-
-alias killfire='kill -9'

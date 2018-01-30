@@ -1,0 +1,14 @@
+#!/bin/bash
+# get useful network adapter info (name, ipv4 address, ipv6 address, mac address
+ifconfig -a | egrep -o "^[A-Za-z0-9]+\s|\sHWaddr\s[^\s]+|\sinet6? addr:\s?[^\s]+\s" | sed -r "s/^\s+/	/g"
+
+# egrep for extended regex
+# -o prints only the matching portion of the lines
+# matches the interface name
+# ^[A-Za-z0-9]+\s
+# matches the MAC address with indentation
+# \sHWaddr\s[^\s]+
+# matches the ipv4 and ipv6 addresses with indentation
+# \sinet6? addr:\s?[^\s]+\s
+# sed replaces all leading whitespace with a tab character
+

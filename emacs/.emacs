@@ -14,6 +14,7 @@
    '("melpa" . "http://melpa.milkbox.net/packages/")
    t))
 
+;; https://github.com/jwiegley/use-package
 (eval-when-compile
     (require 'use-package))
 (setq use-package-always-ensure t)

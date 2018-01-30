@@ -6,7 +6,8 @@ then
     echo "Usage: dconf-term COMMAND FILE"
     echo "A single dash ( - ) can be used to refer \
 to stdin or stdout, where appropriate"
-    echo "COMMAND is either \"import\" or \"export\""
+    echo "COMMAND is either \`import' or \`export'"
+    echo "\`import' loads from a file, \`export' saves to a file"
 fi
 
 if [[ "$1" = "import" ]]

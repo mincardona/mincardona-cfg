@@ -75,6 +75,9 @@
 (size-indication-mode)
 ;; buffer boundary indicators
 (setq-default indicate-buffer-boundaries '((up . right) (down . right)))
+;; mouse wheel scroll speed
+(setq-default mouse-wheel-scroll-amount '(3 ((shift) . 10) ((control) . nil)))
+(setq-default mouse-wheel-progressive-speed nil)
 
 (global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
 (global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
@@ -84,6 +87,10 @@
 ;; move between windows using S-arrow
 (when (fboundp 'windmove-default-keybindings)
       (windmove-default-keybindings))
+
+
+
+
 
 ;;
 ;; Whitespace and indentation stuff
@@ -169,6 +176,10 @@
 (add-hook 'minibuffer-setup-hook 'my-minor-off-hook)
 
 (add-hook 'term-mode-hook 'my-minor-off-hook)
+
+
+
+
 
 ;;
 ;; Themes

@@ -4,3 +4,4 @@ git config --global alias.gr "log --graph --decorate --all --date=short --format
 git config --global alias.logdiff "log -p"
 git config --global alias.logstat "log --stat"
 git config --global alias.logcell "log --numstat"
+git config --global merge.conflictstyle diff3

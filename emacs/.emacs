@@ -1,10 +1,9 @@
-;;
-;; Load emacs 24's package system. Add MELPA repository.
-;;
+; set encoding before anything else
+(prefer-coding-system 'utf-8-unix)
 
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
+; Added by Package.el.  This must come before configurations of
+; installed packages.  Don't delete this line.  If you don't want it,
+; just comment it out by adding a semicolon to the start of the line.
 (package-initialize)
 
 (when (>= emacs-major-version 24)
@@ -14,7 +13,11 @@
    '("melpa" . "http://melpa.milkbox.net/packages/")
    t))
 
-;; https://github.com/jwiegley/use-package
+; boostrap install use-package
+; https://github.com/jwiegley/use-package
+(unless (package-installed-p 'use-package)
+    (package-refresh-contents)
+    (package-install 'use-package))
 (eval-when-compile
     (require 'use-package))
 (setq use-package-always-ensure t)
@@ -23,24 +26,7 @@
 ;; Package config
 ;;
 
-;; (use-package tabbar
-;;     :bind (
-;;         ("M-<left>" . tabbar-backward-tab)
-;;         ("M-<right>" . tabbar-forward-tab)
-;;     )
-;;     :config
-;;     (defun my-tabbar-buffer-groups () ;; customize to show all normal files in one group
-;;         "Returns the name of the tab group names the current buffer belongs to.
-;;         There are two groups: Emacs buffers (those whose name starts with '*', plus
-;;         dired buffers), and the rest.  This works at least with Emacs v24.2 using
-;;         tabbar.el v1.7."
-;;     (list (cond ((string-equal "*" (substring (buffer-name) 0 1)) "emacs")
-;;                ((eq major-mode 'dired-mode) "emacs")
-;;                (t "user"))))
-;;     (setq tabbar-buffer-groups-function 'my-tabbar-buffer-groups)
-;;     (tabbar-mode)
-;; )
-
+; line number counting
 (use-package nlinum
     :config
     (global-nlinum-mode)
@@ -51,6 +37,9 @@
     ;; use t to avoid safety prompt each time
     (load-theme 'afternoon t)
 )
+
+; mode for dlang
+(use-package d-mode)
 
 ;;
 ;; General settings
@@ -84,53 +73,32 @@
 (global-set-key (kbd "S-C-<down>") 'shrink-window)
 (global-set-key (kbd "S-C-<up>") 'enlarge-window)
 
-;; move between windows using S-arrow
+;; move between windows using S-<left>, etc
 (when (fboundp 'windmove-default-keybindings)
       (windmove-default-keybindings))
-
-
-
-
-
-;;
-;; Whitespace and indentation stuff
-;;
-
-(defvar my-indent 4 "My indentation offset.")
-(setq tab-stop-list (number-sequence my-indent 120 my-indent))
-(setq-default indent-tabs-mode nil)
-(setq-default tab-always-indent nil)
-(setq-default tab-width my-indent)
-(defvaralias 'c-basic-offset 'my-indent)
-(defvaralias 'cperl-indent-level 'my-indent)
-
-(electric-indent-mode -1)
-(setq-default electric-indent-inhibit t)
 
 ;;
 ;; Minor mode
 ;;
 
-(global-set-key (kbd "TAB") 'tab-to-tab-stop)
-
-; Retains indent level on newline
-(defun newline-preserve-indent ()
-    "Insert a newline after point with the same indentation as the current line."
-    (interactive)
-    (progn
-     (setq srcstr (thing-at-point 'line t))
-     (newline)
-     (string-match "^[ \t]*" srcstr)
-     (insert (substring srcstr 0 (match-end 0)))
-    )
-)
+;; Retains indent level on newline
+; (defun newline-preserve-indent ()
+;     "Insert a newline after point with the same indentation as the current line."
+;     (interactive)
+;     (progn
+;      (setq srcstr (thing-at-point 'line t))
+;      (newline)
+;      (string-match "^[ \t]*" srcstr)
+;      (insert (substring srcstr 0 (match-end 0)))
+;     )
+; )
 
 ; Deletes groups of spaces if on a tabstop
 (defun smart-del ()
     "Deletes 4 spaces back when on a tabstop, or just the last character."
     (interactive)
-    ; if current column is at beginning of line or not on a tab stop
-    ; or if the previous character is "\t"
+    ; if current column is at beginning of line, not on a tab stop,
+    ;   or the previous character is '\t'
     (if (or (bolp) (/= 0 (% (current-column) my-indent))
             (string= (string (char-before)) "\t")
     )
@@ -154,19 +122,37 @@
     )
 )
 
+;;
+;; Whitespace and indentation stuff
+;;
+
+(defvar my-indent 4 "My indentation offset")
+(global-set-key (kbd "TAB") 'tab-to-tab-stop)
+(setq tab-stop-list (number-sequence my-indent 120 my-indent))
+(setq-default indent-tabs-mode nil)
+(setq-default tab-always-indent nil)
+(setq-default tab-width my-indent)
+(defvaralias 'c-basic-offset 'my-indent)
+(defvaralias 'cperl-indent-level 'my-indent)
+;; uncomment these to disable electric indent
+;(electric-indent-mode -1)
+;(setq-default electric-indent-inhibit t)
+
+
 (defvar my-keys-minor-mode-map
     (let ((map (make-sparse-keymap)))
-        (define-key map (kbd "RET") 'newline-preserve-indent)
-        (define-key map [backspace] 'smart-del)
-        (define-key map "\d" 'smart-del)
+        ;(define-key map (kbd "RET") 'newline-preserve-indent)
+        ;(define-key map [backspace] 'smart-del)
+        ;(define-key map "\d" 'smart-del)
         (define-key map (kbd "M-/") 'hippie-expand)
+        (define-key map (kbd "DEL") 'smart-del)
         map)
-      "my-keys-minor-mode keymap.")
+    "my-keys-minor-mode keymap")
 
 (define-minor-mode my-keys-minor-mode
-  "A minor mode so that my key settings override annoying major modes."
-  :init-value t
-  :lighter " my-keys")
+    "A minor mode so that my key settings override major modes"
+    :init-value t
+    :lighter " my-keys")
 
 (my-keys-minor-mode 1)
 
@@ -176,10 +162,6 @@
 (add-hook 'minibuffer-setup-hook 'my-minor-off-hook)
 
 (add-hook 'term-mode-hook 'my-minor-off-hook)
-
-
-
-
 
 ;;
 ;; Themes
@@ -265,7 +247,7 @@
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
  '(package-selected-packages
    (quote
-    (use-package monochrome-theme gotham-theme afternoon-theme intellij-theme nlinum tabbar)))
+    (d-mode use-package monochrome-theme gotham-theme afternoon-theme intellij-theme nlinum tabbar)))
  '(pdf-view-midnight-colors (quote ("#eeeeee" . "#000000")))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")

@@ -27,6 +27,7 @@ mkdir -p ~/.config/sublime-text-3/Packages/User/
 mkdir -p ~/.config/sublime-text-3/Packages/Custom\ Color\ Schemes/
 cp --preserve "sublime/Preferences.sublime-settings" ~/.config/sublime-text-3/Packages/User/
 cp --preserve "sublime/Default.sublime-keymap" ~/.config/sublime-text-3/Packages/User/
+cp --preserve "sublime/Package Control.sublime-settings" ~/.config/sublime-text-3/Packages/User/
 cp --preserve "sublime/jcd.tmTheme" ~/.config/sublime-text-3/Packages/Custom\ Color\ Schemes/
 
 echo "done."

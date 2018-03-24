@@ -1,38 +1,35 @@
 {
 	"auto_complete": false,
+	"auto_match_enabled": false,
 	"color_scheme": "Packages/Custom Color Schemes/jcd.tmTheme",
 	"copy_with_empty_selection": false,
+	"detect_indentation": false,
 	"ensure_newline_at_eof_on_save": true,
+	"fold_buttons": true,
 	"highlight_line": true,
+	"highlight_modified_tabs": true,
 	"hot_exit": false,
 	"ignored_packages":
 	[
 		"Vintage"
 	],
+	"margin": 1,
 	"overlay_scroll_bars": "disabled",
 	"rulers":
 	[
 		80
 	],
-
 	"shift_tab_unindent": true,
-    "translate_tabs_to_spaces": true,
-    "tabSize": 4,
-    "use_tab_stops": true,
-    "detect_indentation": false,
-
 	"show_encoding": true,
+	"show_full_path": false,
 	"show_line_endings": true,
+	"tabSize": 4,
 	"tab_completion": false,
 	"theme": "Windows 10.sublime-theme",
 	"theme_accent_color_42": true,
 	"theme_default_selection_color": true,
 	"theme_lightgray_sidebar": true,
+	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true,
-
-	"margin": 1,
-	"auto_match_enabled": false,
-	"highlight_modified_tabs": true,
-	"show_full_path": false,
-    "fold_buttons": true
+	"use_tab_stops": true
 }

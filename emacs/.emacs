@@ -41,6 +41,11 @@
 ; mode for dlang
 (use-package d-mode)
 
+(use-package powerline
+    :config
+    (powerline-default-theme)
+)
+
 ;;
 ;; General settings
 ;;

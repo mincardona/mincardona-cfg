@@ -8,4 +8,4 @@ set guifont=Monospace\ 10
 
 syntax on   " enable syntax highlighting
 
-startinsert     " start in insert mode
+inoremap <C-L> <Esc>

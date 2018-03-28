@@ -6,7 +6,7 @@ cp --preserve "bash/.bash_aliases" ~
 
 # vim
 mkdir -p ~/.vim/colors
-cp "vim/.vim/colors/*" ~/.vim/colors/
+cp vim/.vim/colors/* ~/.vim/colors/
 cp --preserve "vim/.vimrc" ~
 
 # nano

@@ -7,6 +7,8 @@ REM nano
 COPY /Y nano\.nanorc "%USERPROFILE%\.nanorc"
 
 REM Vim
+MKDIR "%USERPROFILE%\.vim\colors"
+COPY /Y vim\.vim\colors\* "%USERPROFILE%\.vim\colors\"
 COPY /Y vim\.vimrc "%USERPROFILE%\.vimrc"
 
 REM bash

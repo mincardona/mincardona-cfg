@@ -1,3 +1,5 @@
+set nocompatible
+
 set encoding=utf-8
 
 " allow untabbing
@@ -16,6 +18,9 @@ endif
 
 colo slate  " color scheme
 syntax on   " enable syntax highlighting
+
+set ruler
+set number
 
 " enter normal mode with C-L
 inoremap <C-L> <Esc>

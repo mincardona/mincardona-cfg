@@ -1,25 +1,32 @@
-set nocompatible
-
+" set file encoding first to prevent any decoding errors
 set encoding=utf-8
 
-" allow untabbing
+" any time a user .vimrc is loaded, nocompatible is set unless the -C option is
+" given, so we can comment out this option
+"set nocompatible
+
+" allow unindenting with shift-tab
 inoremap <S-Tab> <C-V><Tab>
-set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab cindent autoindent
 
-set whichwrap+=<,>,[,]   " allow using arrow keys to navigate over EOL
-set backspace=indent,eol,start    " allow backspacing across EOL
+" set tab/indentation behavior
+set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab autoindent
 
-" platform specific stuff
-if has("win32") || has("win16")
-    set guifont=Consolas:h10
-else
-    set shell=/bin/bash
-endif
+" set h and l, as well as the arrow keys in normal/visual (<>) and insert ([])
+" mode to wrap across line boundaries
+set whichwrap+=<,>,h,l,[,]   " allow using arrow keys to navigate over EOL
+" allow backspacing over automatic indents, line boundaries, and the start of
+" insert mode
+set backspace=indent,eol,start
 
-colo slate  " color scheme
-syntax on   " enable syntax highlighting
+" set color scheme
+colo slate
+" enable syntax highlighting
+syntax on
 
+" show text position info (line, column, top, percent of file content, etc.)
+" in the lower bar
 set ruler
+" show line numbers
 set number
 
 " enter normal mode with C-L
@@ -31,8 +38,23 @@ nnoremap <silent> <C-Left> <c-w>h
 nnoremap <silent> <C-Up> <c-w>k
 nnoremap <silent> <C-Down> <c-w>j
 
-if has("gui_running")
-  " GUI is running or is about to start.
-  " Maximize gvim window.
-  set lines=52 columns=110
+" don't wrap lines by default.
+" when textwidth (tw) is 0, manually using gq will wrap to 79 characters.
+set textwidth=0
+
+" platform specific stuff
+if has("win32") || has("win16")
+    set guifont=Consolas:h10
+else
+    set shell=/bin/bash
 endif
+
+if has("gui_running")
+    " gui specific stuff (gui is running or about to start)
+
+    " Maximize gvim window
+    set lines=52 columns=110
+else
+    " terminal-specific stuff
+endif
+

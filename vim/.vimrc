@@ -18,6 +18,9 @@ set whichwrap+=<,>,h,l,[,]   " allow using arrow keys to navigate over EOL
 " insert mode
 set backspace=indent,eol,start
 
+set splitright
+set splitbelow
+
 " set color scheme
 colo slate
 " enable syntax highlighting

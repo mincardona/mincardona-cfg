@@ -41,8 +41,11 @@ nnoremap <silent> <C-Left> <c-w>h
 nnoremap <silent> <C-Up> <c-w>k
 nnoremap <silent> <C-Down> <c-w>j
 
+" use <C-s> in insert mode to save
+inoremap <C-s> <C-o>:<C-u>w<CR>
+
 " don't wrap lines by default.
-" when textwidth (tw) is 0, manually using gq will wrap to 79 characters.
+" when textwidth (tw) is 0, manually using gq will wrap to 79 characters
 set textwidth=0
 
 " platform specific stuff

@@ -41,8 +41,18 @@ nnoremap <silent> <C-Left> <c-w>h
 nnoremap <silent> <C-Up> <c-w>k
 nnoremap <silent> <C-Down> <c-w>j
 
+" http://vim.wikia.com/wiki/Map_Ctrl-S_to_save_current_or_new_files
+command -nargs=0 -bar SmartSave
+\ if &modified
+\|  if empty(bufname('%'))
+\|    browse confirm write
+\|  else
+\|    confirm write
+\|  endif
+\|endif
+
 " use <C-s> in insert mode to save
-inoremap <C-s> <C-o>:<C-u>w<CR>
+inoremap <C-s> <C-o>:<C-u>SmartSave<CR>
 
 " don't wrap lines by default.
 " when textwidth (tw) is 0, manually using gq will wrap to 79 characters

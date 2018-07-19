@@ -1,6 +1,11 @@
 " set file encoding first to prevent any decoding errors
 set encoding=utf-8
 
+" enable filetype detection
+filetype on
+" enable per-filetype indentation rules
+filetype plugin indent on
+
 " any time a user .vimrc is loaded, nocompatible is set unless the -C option is
 " given, so we can comment out this option
 "set nocompatible
@@ -18,6 +23,7 @@ set whichwrap+=<,>,h,l,[,]   " allow using arrow keys to navigate over EOL
 " insert mode
 set backspace=indent,eol,start
 
+" when splitting, prefer to create new windows on the bottom and the right
 set splitright
 set splitbelow
 

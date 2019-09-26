@@ -1,6 +1,6 @@
 [
     // the following 4 keys cause auto curly brace insertion to occur even when auto_match_enabled is false.
-    // so if you set tauto_match_enabled to false, only braces will auto-insert (not quotes, brackets, etc.)
+    // so if you set auto_match_enabled to false, only braces will auto-insert (not quotes, brackets, etc.)
     { "keys": ["{"], "command": "insert_snippet", "args": {"contents": "{$0}"}, "context":
         [
             { "key": "setting.auto_match_enabled", "operator": "equal", "operand": false },
@@ -28,5 +28,20 @@
             { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
             { "key": "following_text", "operator": "regex_contains", "operand": "^\\}", "match_all": true }
         ]
-    }
+    },
+
+
+    // force auto-complete bound to space
+    // https://forum.sublimetext.com/t/solved-ctrl-space-doesnt-complete/7246/8
+    { "keys": ["ctrl+space"], "command": "auto_complete" },
+    { "keys": ["ctrl+space"], "command": "replace_completion_with_auto_complete", "context":
+        [
+            { "key": "last_command", "operator": "equal", "operand": "insert_best_completion" },
+            { "key": "auto_complete_visible", "operator": "equal", "operand": false },
+            { "key": "setting.tab_completion", "operator": "equal", "operand": true }
+        ]
+    },
+
+    { "keys": ["ctrl+a"], "command": "move_to", "args": {"to": "bol", "extend": false}},
+    { "keys": ["ctrl+e"], "command": "move_to", "args": {"to": "eol", "extend": false}}
 ]

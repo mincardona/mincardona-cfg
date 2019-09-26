@@ -28,7 +28,13 @@ set splitright
 set splitbelow
 
 " set color scheme
-colo slate
+try
+    colorscheme jcd
+catch /^Vim\%((\a\+)\)\=:E185/
+" use this if jcd doesn't exist
+    colorscheme slate
+endtry
+
 " enable syntax highlighting
 syntax on
 
@@ -76,7 +82,19 @@ if has("gui_running")
 
     " Maximize gvim window
     set lines=52 columns=110
+    " highlight current line
+    set cursorline
 else
     " terminal-specific stuff
 endif
 
+" cool statusline
+set statusline=
+set statusline+=%<
+set statusline+=%f\ %h%m%r
+set statusline+=%=
+set statusline+=\ %y
+set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
+set statusline+=\[%{&fileformat}\]
+set statusline+=\ %-14.(%l,%c%V%)
+set statusline+=\ %P

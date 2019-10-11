@@ -25,7 +25,7 @@ let colors_name = "jcd"
 :hi SpecialKey guifg=#7F0055 gui=bold ctermfg=darkgreen
 :hi StatusLine guibg=#e9e9e9 guifg=black gui=none cterm=bold,reverse
 :hi StatusLineNC guibg=#e9e9e9 guifg=grey40 gui=none cterm=reverse
-:hi Title guifg=gold gui=bold cterm=bold ctermfg=yellow
+:hi Title guifg=#7F0055 gui=bold cterm=bold ctermfg=yellow
 :hi Statement guifg=#7F0055 ctermfg=lightblue
 :hi Visual gui=none guifg=khaki guibg=olivedrab cterm=reverse
 :hi WarningMsg guifg=salmon ctermfg=1
@@ -37,7 +37,7 @@ let colors_name = "jcd"
 :hi Include guifg=#7F0055 gui=bold ctermfg=red
 :hi PreProc guifg=#7F0055 gui=bold ctermfg=red
 :hi Operator guifg=#000000 ctermfg=Red
-:hi Define guifg=gold gui=bold ctermfg=yellow
+:hi Define guifg=#000000 gui=bold ctermfg=yellow
 :hi Type guifg=#7F0055 ctermfg=2
 :hi Function guifg=#000000 ctermfg=brown
 :hi Structure guifg=#7F0055 gui=bold ctermfg=green

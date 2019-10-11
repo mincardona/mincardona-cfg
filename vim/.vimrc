@@ -98,3 +98,8 @@ set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
 set statusline+=\[%{&fileformat}\]
 set statusline+=\ %-14.(%l,%c%V%)
 set statusline+=\ %P
+
+set laststatus=2
+
+set foldmethod=syntax
+set foldlevelstart=99

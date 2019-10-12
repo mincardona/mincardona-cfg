@@ -1,7 +1,9 @@
 @echo off
 
 REM Emacs
+MKDIR "%APPDATA%\.emacs.d\lisp"
 COPY /Y emacs\.emacs "%APPDATA%\.emacs"
+COPY /Y emacs\.emacs.d\lisp\* "%APPDATA%\.emacs.d\lisp\"
 
 REM nano
 COPY /Y nano\.nanorc "%USERPROFILE%\.nanorc"

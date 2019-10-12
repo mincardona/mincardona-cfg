@@ -76,5 +76,4 @@
 ;;
 (if (eq system-type 'windows-nt)
     (set-face-attribute 'default nil :family "Consolas" :height 100)
-    (set-face-attribute 'default nil :family "DejaVu Sans" :height 100)
 )

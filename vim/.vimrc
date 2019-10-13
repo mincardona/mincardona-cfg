@@ -47,11 +47,51 @@ set number
 " enter normal mode with C-L
 inoremap <C-L> <Esc>
 
-" use C-arrow to move windows
-nnoremap <silent> <C-Right> <c-w>l
-nnoremap <silent> <C-Left> <c-w>h
-nnoremap <silent> <C-Up> <c-w>k
-nnoremap <silent> <C-Down> <c-w>j
+" TODO: cmap/cnoremap and omap/onoremap mappings?
+
+" use S-arrow to move windows
+nnoremap <silent> <S-Right> <C-w>l
+nnoremap <silent> <S-Left> <C-w>h
+nnoremap <silent> <S-Up> <C-w>k
+nnoremap <silent> <S-Down> <C-w>j
+inoremap <silent> <S-Right> <C-o><C-w>l
+inoremap <silent> <S-Left> <C-o><C-w>h
+inoremap <silent> <S-Up> <C-o><C-w>k
+inoremap <silent> <S-Down> <C-o><C-w>j
+
+" <M-m> and <C-a> are switched here relative to Emacs
+inoremap <M-m> <Home>
+vnoremap <M-m> <Home>
+imap <C-a> <C-o>^
+vmap <C-a> ^
+imap <C-e> <End>
+vmap <C-e> <End>
+imap <C-f> <Right>
+vmap <C-f> <Right>
+imap <C-b> <Left>
+vmap <C-b> <Left>
+imap <C-n> <Down>
+vmap <C-n> <Down>
+imap <C-p> <Up>
+vmap <C-p> <Up>
+
+inoremap <C-v> <PageDown>
+vnoremap <C-v> <PageDown>
+inoremap <M-v> <PageUp>
+vnoremap <M-v> <PageUp>
+
+inoremap <M-x> <C-o>:
+vnoremap <M-x> :
+
+inoremap <C-x>2 <C-o><C-w>s
+inoremap <C-x>3 <C-o><C-w>v
+inoremap <C-x>0 <C-o><C-w>c
+inoremap <C-x>1 <C-o><C-w>o
+inoremap <C-x>+ <C-o><C-w>=
+inoremap <C-x>o <C-o><C-w>w
+
+inoremap <C-x><C-f> <C-o>:hide edit<Space>
+
 
 " http://vim.wikia.com/wiki/Map_Ctrl-S_to_save_current_or_new_files
 command -nargs=0 -bar SmartSave
@@ -65,6 +105,7 @@ command -nargs=0 -bar SmartSave
 
 " use <C-s> in insert mode to save
 inoremap <C-s> <C-o>:<C-u>SmartSave<CR>
+inoremap <C-x><C-s> <C-o>:<C-u>SmartSave<CR>
 
 " don't wrap lines by default.
 " when textwidth (tw) is 0, manually using gq will wrap to 79 characters

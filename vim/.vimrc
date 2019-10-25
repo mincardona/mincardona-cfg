@@ -75,11 +75,6 @@ vmap <C-n> <Down>
 imap <C-p> <Up>
 vmap <C-p> <Up>
 
-inoremap <C-v> <PageDown>
-vnoremap <C-v> <PageDown>
-inoremap <M-v> <PageUp>
-vnoremap <M-v> <PageUp>
-
 inoremap <M-x> <C-o>:
 vnoremap <M-x> :
 
@@ -114,8 +109,26 @@ set textwidth=0
 " platform specific stuff
 if has("win32") || has("win16")
     set guifont=Consolas:h10
+
+    " integrate with the system clipboard
+    if has("clipboard")
+        set clipboard=unnamed
+    end
+
+    " use common paste shortcut
+    inoremap <C-v> <C-r>*
+    cnoremap <C-v> <C-r>*
 else
     set shell=/bin/bash
+
+    " integrate with the system clipboard
+    if has("clipboard")
+        set clipboard=unnamedplus
+    end
+
+    " use common paste shortcut
+    inoremap <C-v> <C-r>+
+    cnoremap <C-v> <C-r>+
 endif
 
 if has("gui_running")
@@ -142,5 +155,9 @@ set statusline+=\ %P
 
 set laststatus=2
 
+" code folding
 set foldmethod=syntax
 set foldlevelstart=99
+
+" enable right-click menu
+set mousemodel=popup

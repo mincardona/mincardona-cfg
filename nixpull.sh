@@ -5,11 +5,15 @@ cp --preserve "bash/.bashrc" ~
 cp --preserve "bash/.bash_aliases" ~
 
 # vim
+cp --preserve "vim/.vimrc" ~
 mkdir -p ~/.vim/colors
 cp vim/.vim/colors/* ~/.vim/colors/
 mkdir -p ~/.vim/ftplugin
 cp vim/.vim/ftplugin/* ~/.vim/ftplugin/
-cp --preserve "vim/.vimrc" ~
+mkdir -p ~/.vim/plugin
+cp vim/.vim/plugin/* ~/.vim/plugin/
+mkdir -p ~/.vim/doc
+cp vim/.vim/doc/* ~/.vim/doc/
 
 # nano
 cp --preserve "nano/.nanorc" ~

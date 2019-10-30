@@ -9,11 +9,15 @@ REM nano
 COPY /Y nano\.nanorc "%USERPROFILE%\.nanorc"
 
 REM Vim
+COPY /Y vim\.vimrc "%USERPROFILE%\.vimrc"
 MKDIR "%USERPROFILE%\vimfiles\colors"
 COPY /Y vim\.vim\colors\* "%USERPROFILE%\vimfiles\colors\"
 MKDIR "%USERPROFILE%\vimfiles\ftplugin"
 COPY /Y vim\.vim\ftplugin\* "%USERPROFILE%\vimfiles\ftplugin\"
-COPY /Y vim\.vimrc "%USERPROFILE%\.vimrc"
+MKDIR "%USERPROFILE%\vimfiles\plugin"
+COPY /Y vim\.vim\plugin\* "%USERPROFILE%\vimfiles\plugin\"
+MKDIR "%USERPROFILE%\vimfiles\doc"
+COPY /Y vim\.vim\doc\* "%USERPROFILE%\vimfiles\doc\"
 
 REM bash
 COPY /Y bash\.bashrc "%USERPROFILE%\.bashrc"

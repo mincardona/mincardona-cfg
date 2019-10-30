@@ -1,14 +1,16 @@
 " set file encoding first to prevent any decoding errors
 set encoding=utf-8
 
+let mapleader=","
+
+" any time a user .vimrc is loaded, nocompatible is set unless the -C option is
+" given, so we can comment out this option
+set nocompatible
+
 " enable filetype detection
 filetype on
 " enable per-filetype indentation rules
 filetype plugin indent on
-
-" any time a user .vimrc is loaded, nocompatible is set unless the -C option is
-" given, so we can comment out this option
-"set nocompatible
 
 " allow unindenting with shift-tab
 inoremap <S-Tab> <C-V><Tab>
@@ -43,6 +45,8 @@ syntax on
 set ruler
 " show line numbers
 set number
+
+
 
 " enter normal mode with C-L
 inoremap <C-L> <Esc>
@@ -86,6 +90,8 @@ inoremap <C-x>+ <C-o><C-w>=
 inoremap <C-x>o <C-o><C-w>w
 
 inoremap <C-x><C-f> <C-o>:hide edit<Space>
+
+inoremap <C-Space> <C-o>v
 
 
 " http://vim.wikia.com/wiki/Map_Ctrl-S_to_save_current_or_new_files
@@ -161,3 +167,6 @@ set foldlevelstart=99
 
 " enable right-click menu
 set mousemodel=popup
+
+set wildmenu
+set wildmode=list:full

@@ -40,4 +40,9 @@ cp --preserve "sublime/Default.sublime-keymap" ~/.config/sublime-text-3/Packages
 cp --preserve "sublime/Package Control.sublime-settings" ~/.config/sublime-text-3/Packages/User/
 cp --preserve "sublime/jcd.tmTheme" ~/.config/sublime-text-3/Packages/Custom\ Color\ Schemes/
 
+# vscode
+mkdir -p ~/.config/Code/User
+cp --preserve "vscode/settings.json" ~/.config/Code/User/
+cp --preserve "vscode/keybindings.json" ~/.config/Code/User/
+
 echo "done."

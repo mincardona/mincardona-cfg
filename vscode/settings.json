@@ -30,5 +30,17 @@
     "editor.rulers": [
         80
     ],
-    "editor.matchBrackets": false
+    "editor.matchBrackets": false,
+
+    "bracket-pair-colorizer-2.colors": [],
+    "bracket-pair-colorizer-2.highlightActiveScope": true,
+    "bracket-pair-colorizer-2.activeScopeCSS": [
+        "borderStyle : none none solid none",
+        "borderWidth : 1px",
+        "borderColor : {color}",
+        "opacity: 0.8"
+    ],
+    "bracket-pair-colorizer-2.showBracketsInGutter": true,
+    "bracket-pair-colorizer-2.showVerticalScopeLine": false,
+    "bracket-pair-colorizer-2.showHorizontalScopeLine": false
 }

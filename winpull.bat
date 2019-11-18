@@ -30,3 +30,8 @@ COPY /Y sublime\Preferences.sublime-settings "%APPDATA%\Sublime Text 3\Packages\
 COPY /Y "sublime\Package Control.sublime-settings" "%APPDATA%\Sublime Text 3\Packages\User\"
 COPY /Y sublime\Default.sublime-keymap "%APPDATA%\Sublime Text 3\Packages\User\"
 COPY /Y sublime\jcd.tmTheme "%APPDATA%\Sublime Text 3\Packages\Custom Color Schemes\"
+
+REM vscode
+MKDIR "%APPDATA%\Code\User\"
+COPY /Y vscode\settings.json "%APPDATA%\Code\User\"
+COPY /Y vscode\keybindings.json "%APPDATA%\Code\User\"

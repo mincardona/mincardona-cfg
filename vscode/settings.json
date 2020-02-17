@@ -30,7 +30,13 @@
     "editor.rulers": [
         80
     ],
-    "editor.matchBrackets": false,
+
+    "[plaintext]": {
+        "editor.wordWrap": "wordWrapColumn",
+        "editor.wordWrapColumn": 80,
+    },
+
+    "editor.matchBrackets": "never",
 
     "bracket-pair-colorizer-2.colors": [],
     "bracket-pair-colorizer-2.highlightActiveScope": true,

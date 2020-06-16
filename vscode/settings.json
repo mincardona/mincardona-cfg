@@ -25,7 +25,7 @@
         "comments": false,
         "strings": false
     },
-    "workbench.colorTheme": "Visual Studio Dark",
+    "workbench.colorTheme": "Visual Studio Light",
     "editor.occurrencesHighlight": false,
     "editor.rulers": [
         80

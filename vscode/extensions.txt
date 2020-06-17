@@ -1,0 +1,12 @@
+Install
+- MacOS Modern Theme
+    MacOS Modern Light - Xcode Low Key
+    MacOS Modern - Minimal Monochrome Icons
+- Bracket Pair Colorizer 2
+- (Custom) My Maclipse theme uses the "MacOS Modern Light - Xcode Low Key" UI colors with the "Duke Light" syntax colors.
+
+Curiosity
+- Duke Light
+
+Commands
+- Developer: "Inspect Editor Tokens and Scopes" (to inspect current TextMate scope and style)

@@ -1,0 +1,23 @@
+{        
+    "name": "theme-maclipse",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": ">=1.42.0"
+    },
+    "publisher": "michaelincardona",
+    "keywords": [
+		"color-theme"
+	],
+    "categories": [
+		"Themes"
+	],
+    "contributes": {
+        "themes": [
+            {
+                "label": "Maclipse",
+                "uiTheme": "vs",
+                "path": "./themes/maclipse.json"
+            }
+        ]
+    }
+}

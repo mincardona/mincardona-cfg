@@ -44,5 +44,7 @@ cp --preserve "sublime/jcd.tmTheme" ~/.config/sublime-text-3/Packages/Custom\ Co
 mkdir -p ~/.config/Code/User
 cp --preserve "vscode/settings.json" ~/.config/Code/User/
 cp --preserve "vscode/keybindings.json" ~/.config/Code/User/
+mkdir -p ~/.vscode/extensions
+cp --preserve -r "vscode/extensions/michaelincardona.maclipse" ~/.vscode/extensions/
 
 echo "done."

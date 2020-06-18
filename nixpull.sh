@@ -47,4 +47,7 @@ cp --preserve "vscode/keybindings.json" ~/.config/Code/User/
 mkdir -p ~/.vscode/extensions
 cp --preserve -r "vscode/extensions/michaelincardona.maclipse" ~/.vscode/extensions/
 
+# tmux
+cp --preserve "tmux/.tmux.conf" ~
+
 echo "done."

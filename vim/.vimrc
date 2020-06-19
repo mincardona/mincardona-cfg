@@ -66,18 +66,27 @@ inoremap <silent> <S-Down> <C-o><C-w>j
 " <M-m> and <C-a> are switched here relative to Emacs
 inoremap <M-m> <Home>
 vnoremap <M-m> <Home>
-imap <C-a> <C-o>^
-vmap <C-a> ^
-imap <C-e> <End>
-vmap <C-e> <End>
-imap <C-f> <Right>
-vmap <C-f> <Right>
-imap <C-b> <Left>
-vmap <C-b> <Left>
-imap <C-n> <Down>
-vmap <C-n> <Down>
-imap <C-p> <Up>
-vmap <C-p> <Up>
+inoremap <C-a> <C-o>^
+vnoremap <C-a> ^
+" make <C-e> go to end-of-line (like Emacs) unless the completion
+" popup menu is open (<C-e> exits the popup menu)
+inoremap <expr> <C-e> pumvisible() ? '<C-e>' : '<End>'
+vnoremap <expr> <C-e> pumvisible() ? '<C-e>' : '<End>'
+inoremap <C-f> <Right>
+vnoremap <C-f> <Right>
+inoremap <C-b> <Left>
+vnoremap <C-b> <Left>
+inoremap <C-n> <Down>
+vnoremap <C-n> <Down>
+inoremap <C-p> <Up>
+vnoremap <C-p> <Up>
+
+" rebind completion popup because <C-n> and <C-p> are remapped
+inoremap <C-_> <C-n>
+inoremap <C-j> <C-p>
+inoremap <expr> <Down> pumvisible() ? '<C-n>' : '<Down>'
+inoremap <expr> <Up> pumvisible() ? '<C-p>' : '<Up>'
+inoremap <expr> <CR> pumvisible() ? '<C-y>' : '<CR>'
 
 inoremap <M-x> <C-o>:
 vnoremap <M-x> :
@@ -133,8 +142,8 @@ else
     end
 
     " use common paste shortcut
-    inoremap <C-v> <C-r>+
-    cnoremap <C-v> <C-r>+
+    " inoremap <C-v> <C-r>+
+    " cnoremap <C-v> <C-r>+
 endif
 
 if has("gui_running")
@@ -170,3 +179,10 @@ set mousemodel=popup
 
 set wildmenu
 set wildmode=list:full
+
+" enable mouse control
+set mouse=a
+
+let &t_SI = "\<Esc>[5 q"
+let &t_SR = "\<Esc>[3 q"
+let &t_EI = "\<Esc>[1 q"

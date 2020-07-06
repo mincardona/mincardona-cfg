@@ -118,9 +118,33 @@
 (setq-default company-selection-wrap-around t)
 (company-tng-configure-default)
 (setq-default company-idle-delay nil)
+
+(use-package vscode-dark-plus-theme
+  :config
+  (load-theme 'vscode-dark-plus t))
+
+(use-package php-mode)
+
 ;;
 ;; Themes
 ;;
 (if (eq system-type 'windows-nt)
     (set-face-attribute 'default nil :family "Consolas" :height 100)
 )
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("79bc32a7c8da2ca2dd33591df9485258293e0e6e03d0ff4a2403a6882dcfdb2b" default)))
+ '(package-selected-packages
+   (quote
+    (php-mode vscode-dark-plus-theme use-package diminish company))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

@@ -113,11 +113,12 @@
   :init
   (global-company-mode))
 
-(global-set-key (kbd "C-c f") 'company-complete)
+(global-set-key (kbd "C-c c") 'company-complete)
 (setq-default company-auto-complete-chars nil)
 (setq-default company-selection-wrap-around t)
-(company-tng-configure-default)
 (setq-default company-idle-delay nil)
+(company-tng-configure-default)
+(setq company-backends (delete 'company-semantic company-backends))
 
 (use-package vscode-dark-plus-theme
   :config

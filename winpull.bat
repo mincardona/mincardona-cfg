@@ -31,10 +31,10 @@ COPY /Y "sublime\Package Control.sublime-settings" "%APPDATA%\Sublime Text 3\Pac
 COPY /Y sublime\Default.sublime-keymap "%APPDATA%\Sublime Text 3\Packages\User\"
 COPY /Y sublime\jcd.tmTheme "%APPDATA%\Sublime Text 3\Packages\Custom Color Schemes\"
 
-REM vscode
-MKDIR "%APPDATA%\Code\User\"
-COPY /Y vscode\settings.json "%APPDATA%\Code\User\"
-COPY /Y vscode\keybindings.json "%APPDATA%\Code\User\"
-MKDIR "%USERPROFILE%\.vscode\extensions\michaelincardona.maclipse\themes"
-COPY /Y vscode\extensions\michaelincardona.maclipse\themes\maclipse.json "%USERPROFILE%\.vscode\extensions\michaelincardona.maclipse\themes\"
-COPY /Y vscode\extensions\michaelincardona.maclipse\package.json "%USERPROFILE%\.vscode\extensions\michaelincardona.maclipse\"
+REM vscode - now using settings sync instead
+REM MKDIR "%APPDATA%\Code\User\"
+REM COPY /Y vscode\settings.json "%APPDATA%\Code\User\"
+REM COPY /Y vscode\keybindings.json "%APPDATA%\Code\User\"
+REM MKDIR "%USERPROFILE%\.vscode\extensions\michaelincardona.maclipse\themes"
+REM COPY /Y vscode\extensions\michaelincardona.maclipse\themes\maclipse.json "%USERPROFILE%\.vscode\extensions\michaelincardona.maclipse\themes\"
+REM COPY /Y vscode\extensions\michaelincardona.maclipse\package.json "%USERPROFILE%\.vscode\extensions\michaelincardona.maclipse\"

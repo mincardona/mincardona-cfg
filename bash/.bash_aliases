@@ -1,14 +1,3 @@
-# some more ls aliases [taken from .bashrc]
-#alias ll='ls -alF'
-#alias la='ls -A'
-#alias l='ls -CF'
-
-# ls aliases
-alias l='ls -Fh'
-alias la='ls -FAh'
-alias ll='ls -Flh'
-alias lla='ls -Flah'
-
 alias lg='git status'
 
 alias temacs='emacs -nw'

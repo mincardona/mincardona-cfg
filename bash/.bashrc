@@ -8,6 +8,12 @@ case $- in
       *) return;;
 esac
 
+if [ -f /proc/version ] && grep -iq 'microsoft.*wsl' /proc/version; then
+    IS_WSL="YES"
+else
+    IS_WSL="NO"
+fi
+
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
@@ -37,7 +43,11 @@ if [ "$COLOR_TERM" = yes ]; then
         test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     fi
 
-    alias ls='ls --color=auto'
+    alias ls='ls --color=auto -Fh'
+    alias la='ls --color=auto -FAh'
+    alias ll='ls --color=auto -Flh'
+    alias lla='ls --color=auto -Flah'
+
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
@@ -46,7 +56,18 @@ if [ "$COLOR_TERM" = yes ]; then
     alias egrep='egrep --color=auto'
 
     export COLORTERM="$COLOR_TERM"
-    export CLICOLOR="$COLORTERM"
+    export CLICOLOR="$COLOR_TERM"
+else
+    alias ls='ls -Fh'
+    alias la='ls -FAh'
+    alias ll='ls -Flh'
+    alias lla='ls -Flah'
+fi
+
+if [ "$IS_WSL" = YES ] && [ -n "$LS_COLORS" ]; then
+    # Remove the green background from other-writeable, non-sticky dirs
+    # These are too common on WSL for the green background to be useful
+    LS_COLORS=$(sed -r 's/(^|:)ow=[0-9;]+/\1ow=01;34/' <<<$LS_COLORS)
 fi
 
 # make less more friendly for non-text input files, see lesspipe(1)

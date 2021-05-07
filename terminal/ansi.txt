@@ -1,12 +1,12 @@
 (normal r,g,b)
-7,54,66         #073642
-220,50,47       #DC322F
-133,153,0       #859900
-181,137,0       #b58900
-38,139,210      #268bd2
-211,54,130      #d33682
-42,161,152      #2aa198
-238,232,213     #eee8d5
+7,54,66         #073642     black
+220,50,47       #DC322F     red
+133,153,0       #859900     green
+181,137,0       #b58900     yellow
+38,139,210      #268bd2     blue
+211,54,130      #d33682     magenta
+42,161,152      #2aa198     cyan
+238,232,213     #eee8d5     white
 
 (bright r,g,b)
 0,43,54         #002b36
@@ -20,4 +20,46 @@
 
 Enable "use bright" or similar setting
 
-Set text color to 0,0,0 and background color to 255,255,255
+Set text color to 255,255,255 and background color to 0,0,0
+
+
+
+on BSD:
+    export LSCOLORS=ExGxFxdaCxDaDahbadacec
+on Ubuntu:
+    export LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32
+    (plus extra file types)
+
+https://unix.stackexchange.com/a/94505
+https://askubuntu.com/a/466203/453754
+
+Windows terminal:
+
+"schemes": [
+    {
+        "name": "DuClare",
+
+        // "cursorColor": "#FFFFFF",
+        // "selectionBackground": "#FFFFFF",
+
+        "background": "#000000",
+        "foreground": "#FFFFFF",
+        "black": "#073642",
+        "red": "#DC322F",
+        "green": "#859900",
+        "yellow": "#b58900",
+        "blue": "#268bd2",
+        "magenta": "#d33682",
+        "cyan": "#2aa198",
+        "white": "#eee8d5",
+
+        "brightBlack": "#002b36",
+        "brightRed": "#cb4b16",
+        "brightGreen": "#586e75",
+        "brightYellow": "#657b83",
+        "brightBlue": "#839496",
+        "brightMagenta": "#6c71c4",
+        "brightCyan": "#93a1a1",
+        "brightWhite": "#fdf6e3"
+    }
+]

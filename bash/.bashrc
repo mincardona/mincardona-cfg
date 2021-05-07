@@ -8,7 +8,7 @@ case $- in
       *) return;;
 esac
 
-if grep -iq 'microsoft.*wsl' /proc/version; then
+if [ -f /proc/version ] && grep -iq 'microsoft.*wsl' /proc/version; then
     IS_WSL="YES"
 else
     IS_WSL="NO"

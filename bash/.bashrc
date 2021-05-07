@@ -14,6 +14,8 @@ shopt -s checkwinsize
 
 # enables "**" globbing
 shopt -s globstar
+# enables +(...), *(...), etc. globbing
+shopt -s extglob
 
 # don't put duplicate lines or lines starting with space in the history.
 HISTCONTROL=ignoreboth

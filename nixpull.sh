@@ -4,6 +4,9 @@
 cp --preserve "bash/.bashrc" ~
 cp --preserve "bash/.bash_aliases" ~
 
+# zsh
+cp --preserve "zsh/.zshrc" ~
+
 # vim
 cp --preserve "vim/.vimrc" ~
 mkdir -p ~/.vim/colors

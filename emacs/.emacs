@@ -44,9 +44,13 @@
       (windmove-default-keybindings))
 
 (require 'package)
+(add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
+
+;; fix gnu elpa connection
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 (package-initialize)
 
 ;; save backup files in the temp directory
@@ -77,6 +81,11 @@
 (setq backward-delete-char-untabify-method 'hungry)
 ;; don't indent in namespace{...}
 (c-set-offset 'innamespace 0)
+(setq-default fill-column 80)
+
+(add-hook 'html-mode-hook
+    (lambda ()
+      (set (make-local-variable 'sgml-basic-offset) 4)))
 
 ;; trim whitespace on changed lines after saving
 (require 'ws-butler)
@@ -87,7 +96,7 @@
 (setq-default show-trailing-whitespace t)
 
 ;; display line numbers
-(when (version<= "26.0.50" emacs-version )
+(when (version<= "26.0.50" emacs-version)
   (global-display-line-numbers-mode))
 
 ;; open *scratch* file when starting up
@@ -99,6 +108,12 @@
 (add-hook 'dired-load-hook
 	  (function (lambda () (load "dired-x"))))
 
+;; use ibuffer instead of buffermenu
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+
+;; split ediff with a vertical line by default
+(setq-default ediff-split-window-function 'split-window-horizontally)
+
 ;; packages
 (unless (package-installed-p 'diminish)
   (package-refresh-contents)
@@ -109,22 +124,51 @@
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
 
-(use-package company
-  :init
-  (global-company-mode))
+;(use-package lsp-mode
+;    :commands (lsp lsp-deferred)
+;    :hook (c++-mode . lsp-deferred) (c-mode . lsp-deferred)
+;    :config (setq-default lsp-clients-clangd-executable "clangd10"))
 
-(global-set-key (kbd "C-c c") 'company-complete)
-(setq-default company-auto-complete-chars nil)
-(setq-default company-selection-wrap-around t)
-(setq-default company-idle-delay nil)
-(company-tng-configure-default)
-(setq company-backends (delete 'company-semantic company-backends))
+;(use-package lsp-ui
+;    :commands lsp-ui-mode)
+
+;(use-package company
+;  :init
+;  (global-company-mode)
+;  :config
+;  (global-set-key (kbd "C-c c") 'company-manual-begin)
+;  (setq-default company-auto-complete-chars nil)
+;  (setq-default company-selection-wrap-around t)
+;  (setq-default company-idle-delay nil)
+;  ;(company-tng-configure-default)
+;)
+
+;;; (setq company-backends (delete 'company-semantic company-backends))
+
+;(use-package company-lsp
+;    :commands company-lsp)
+
+;(use-package flycheck
+;  :ensure t
+;  :init (global-flycheck-mode))
 
 (use-package vscode-dark-plus-theme
   :config
   (load-theme 'vscode-dark-plus t))
 
-(use-package php-mode)
+(use-package git-commit)
+
+(use-package web-mode
+    :config
+    (setq-default web-mode-enable-current-element-highlight t)
+    (add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode)))
+
+(use-package clang-format
+    :config
+    (setq-default clang-format-style "file")
+    (setq-default clang-format-executable "/usr/local/bin/clang-format10")
+    (setq-default clang-format-fallback-style "none")
+    (global-set-key (kbd "C-c f") 'clang-format-region))
 
 ;;
 ;; Themes
@@ -142,7 +186,7 @@
     ("79bc32a7c8da2ca2dd33591df9485258293e0e6e03d0ff4a2403a6882dcfdb2b" default)))
  '(package-selected-packages
    (quote
-    (php-mode vscode-dark-plus-theme use-package diminish company))))
+    (vscode-dark-plus-theme use-package diminish company))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

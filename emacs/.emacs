@@ -43,6 +43,11 @@
 (when (fboundp 'windmove-default-keybindings)
       (windmove-default-keybindings))
 
+;; uncomment this to exit this file early
+;; (useful for troubleshooting slow startup)
+;(with-current-buffer " *load*"
+;  (goto-char (point-max)))
+
 (require 'package)
 (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
@@ -63,6 +68,7 @@
 ;; Whitespace and indentation stuff
 ;;
 
+; using Google style now
 (setq-default c-default-style "java")
 (defvar my-indent 4 "My indentation offset")
 (global-set-key (kbd "TAB") 'tab-to-tab-stop)
@@ -86,12 +92,6 @@
 (add-hook 'html-mode-hook
     (lambda ()
       (set (make-local-variable 'sgml-basic-offset) 4)))
-
-;; trim whitespace on changed lines after saving
-(require 'ws-butler)
-(add-hook 'prog-mode-hook #'ws-butler-mode)
-;; allow deleting whitespace next to the cursor
-(setq-default ws-butler-keep-whitespace-before-point nil)
 
 (setq-default show-trailing-whitespace t)
 
@@ -123,6 +123,27 @@
   (package-install 'use-package))
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
+
+;; trim whitespace on changed lines after saving
+(use-package ws-butler
+  :config
+  (add-hook 'prog-mode-hook #'ws-butler-mode)
+  ; allow deleting whitespace next to the cursor
+  (setq-default ws-butler-keep-whitespace-before-point nil))
+
+(defconst redcom-c-style
+  "Google"
+  '((c-basic-offset . 4))
+)
+(use-package google-c-style
+  :config
+  ;(add-hook 'c-mode-common-hook 'google-set-c-style)
+  ;(add-hook 'c-mode-common-hook (lambda () (setq-default c-basic-offset my-indent)))
+  (add-hook 'c-mode-common-hook (lambda ()
+    (c-add-style "Google" google-c-style)
+    (c-add-style "redcom" redcom-c-style t)
+  ))
+)
 
 ;(use-package lsp-mode
 ;    :commands (lsp lsp-deferred)
@@ -156,7 +177,9 @@
   :config
   (load-theme 'vscode-dark-plus t))
 
-(use-package git-commit)
+(use-package git-commit
+  :config
+  (setq-default git-commit-major-mode 'markdown-mode))
 
 (use-package web-mode
     :config
@@ -169,6 +192,31 @@
     (setq-default clang-format-executable "/usr/local/bin/clang-format10")
     (setq-default clang-format-fallback-style "none")
     (global-set-key (kbd "C-c f") 'clang-format-region))
+
+;;
+;; Custom functions
+;;
+
+;; https://emacs.stackexchange.com/a/50730
+(defun revert-all-buffers ()
+  "Revert all open buffers from their respective files."
+  (interactive)
+  (let* ((list (buffer-list))
+         (buffer (car list)))
+    (while buffer
+      (let ((filename (buffer-file-name buffer)))
+        ;; Revert only buffers containing files;
+        ;; do not try to revert non-file buffers like *Messages*.
+        (when filename
+          (if (file-exists-p filename)
+              ;; If the file exists, revert the buffer.
+              (with-demoted-errors "Error: %S"
+                (with-current-buffer buffer
+                  (revert-buffer :ignore-auto :noconfirm :preserve-modes)))
+              ;; If the file doesn't exist, signal an error.
+              (error "File for buffer no longer exists: %s" buffer)))
+        (setq buffer (pop list)))))
+  (message "Finished reverting buffers."))
 
 ;;
 ;; Themes
@@ -184,9 +232,7 @@
  '(custom-safe-themes
    (quote
     ("79bc32a7c8da2ca2dd33591df9485258293e0e6e03d0ff4a2403a6882dcfdb2b" default)))
- '(package-selected-packages
-   (quote
-    (vscode-dark-plus-theme use-package diminish company))))
+ '(package-selected-packages (quote (vscode-dark-plus-theme use-package diminish))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

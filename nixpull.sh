@@ -23,8 +23,8 @@ cp --preserve "nano/.nanorc" ~
 
 # emacs
 mkdir -p ~/.emacs.d/lisp/
+rm -f ~/.emacs.d/lisp/ws-butler.el
 cp --preserve "emacs/.emacs" ~
-cp --preserve emacs/.emacs.d/lisp/* ~/.emacs.d/lisp/
 
 # gtksourceview
 mkdir --parents ~/.local/share/gtksourceview-3.0/styles

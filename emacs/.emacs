@@ -132,14 +132,14 @@
   (setq-default ws-butler-keep-whitespace-before-point nil))
 
 (defconst redcom-c-style
-  "Google"
-  '((c-basic-offset . 4))
+  '("Google"
+  (c-basic-offset . 4))
 )
 (use-package google-c-style
   :config
   ;(add-hook 'c-mode-common-hook 'google-set-c-style)
   ;(add-hook 'c-mode-common-hook (lambda () (setq-default c-basic-offset my-indent)))
-  (add-hook 'c-mode-common-hook (lambda ()
+  (add-hook 'c-mode-common-hook '(lambda ()
     (c-add-style "Google" google-c-style)
     (c-add-style "redcom" redcom-c-style t)
   ))

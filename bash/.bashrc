@@ -102,7 +102,7 @@ function prompt_command {
     BOLD_GREEN_STR='\[\e[1;32m\]'
     BOLD_BLUE_STR='\[\e[1;34m\]'
     GIT_ST_COLOR='\[\e[1;35m\]'
-    COLOR_RESET='\[\e[0m\]'
+    COLOR_RESET='\[\e[00m\]'
 
     local PROMPT_COLOR=""
     if [[ $EUID -eq 0 ]]; then
@@ -125,7 +125,7 @@ function prompt_command {
        RETSTR=" ${RED_STR}[$RETCODE]"
     fi
 
-    PS1="${DEBIAN_CHROOT_STR}${BOLD_GREEN_STR}\u@\h ${BOLD_BLUE_STR}\w${GIT_ST}${RETSTR}\n${PROMPT_COLOR}\$ ${COLOR_RESET}"
+    PS1="${DEBIAN_CHROOT_STR}${BOLD_GREEN_STR}\u@\h ${BOLD_BLUE_STR}\w${GIT_ST}${RETSTR}\n${PROMPT_COLOR}\$${COLOR_RESET} "
 
     # If this is an xterm set the title to user@host:dir
     case "$TERM" in

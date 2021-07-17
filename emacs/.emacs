@@ -11,6 +11,7 @@
 ;; require a single blank line at the end of each file
 (setq-default require-final-newline t)
 (setq-default delete-trailing-lines nil)
+(setq sentence-end-double-space nil)
 ;; don't create backup files and clutter
 (setq auto-save-default nil)
 

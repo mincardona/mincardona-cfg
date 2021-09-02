@@ -178,6 +178,12 @@
   :config
   (load-theme 'vscode-dark-plus t))
 
+; use markdown mode for arc diffs (and git commits)
+(use-package markdown-mode
+  :config
+  (add-to-list 'auto-mode-alist '("^new-commit<.*>\\'" . markdown-mode))
+  (add-to-list 'auto-mode-alist '("^differential-update-comments\\'" . markdown-mode)))
+
 (use-package git-commit
   :config
   (setq-default git-commit-major-mode 'markdown-mode))

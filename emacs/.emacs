@@ -2,7 +2,7 @@
 (prefer-coding-system 'utf-8-unix)
 
 ; load custom scripts
-(add-to-list 'load-path "~/.emacs.d/lisp")
+;(add-to-list 'load-path "~/.emacs.d/lisp")
 
 ;;
 ;; General settings
@@ -114,6 +114,10 @@
 
 ;; split ediff with a vertical line by default
 (setq-default ediff-split-window-function 'split-window-horizontally)
+
+;; comment and uncomment lines and regions
+;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Comment-Commands.html
+(global-set-key (kbd "C-c /") 'comment-line)
 
 ;; packages
 (unless (package-installed-p 'diminish)

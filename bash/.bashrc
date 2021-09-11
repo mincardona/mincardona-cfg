@@ -27,7 +27,6 @@ shopt -s extglob
 HISTCONTROL=ignoreboth
 # append to the history file, don't overwrite it
 shopt -s histappend
-
 HISTSIZE=1000
 HISTFILESIZE=2000
 
@@ -67,7 +66,7 @@ fi
 if [ "$IS_WSL" = YES ] && [ -n "$LS_COLORS" ]; then
     # Remove the green background from other-writeable, non-sticky dirs
     # These are too common on WSL for the green background to be useful
-    LS_COLORS=$(sed -r 's/(^|:)ow=[0-9;]+/\1ow=01;34/' <<<$LS_COLORS)
+    LS_COLORS="$(sed -r 's/(^|:)ow=[0-9;]+/\1ow=01;34/' <<<$LS_COLORS)"
 fi
 
 # make less more friendly for non-text input files, see lesspipe(1)
@@ -125,7 +124,7 @@ function prompt_command {
        RETSTR=" ${RED_STR}[$RETCODE]"
     fi
 
-    PS1="${DEBIAN_CHROOT_STR}${BOLD_GREEN_STR}\u@\h ${BOLD_BLUE_STR}\w${GIT_ST}${RETSTR}\n${PROMPT_COLOR}\$${COLOR_RESET} "
+    PS1="${DEBIAN_CHROOT_STR}${BOLD_GREEN_STR}\u@\h ${BOLD_BLUE_STR}\w${GIT_ST}${RETSTR}${COLOR_RESET}\n${PROMPT_COLOR}\$${COLOR_RESET} "
 
     # If this is an xterm set the title to user@host:dir
     case "$TERM" in
@@ -138,6 +137,7 @@ function prompt_command {
 PROMPT_DIRTRIM=3
 PROMPT_COMMAND=prompt_command
 
+# cycle through options
 bind '"\t":menu-complete'
 bind '"\e[Z":menu-complete-backward'
 export PAGER='less'

@@ -229,6 +229,36 @@
         (setq buffer (pop list)))))
   (message "Finished reverting buffers."))
 
+(defun mji/include-guard (macro_symbol)
+    (interactive "sMacro symbol: ")
+    (move-beginning-of-line nil)
+    (when (string=
+            ""
+            (buffer-substring-no-properties (line-beginning-position) (line-end-position)))
+        ; insert two blank lines and move to the top one
+        (open-line 1))
+    (let ((point-bak (point)))
+        (insert "#ifndef " macro_symbol "\n#define " macro_symbol "\n")
+        (goto-char (point-max))
+        (open-line 1)
+        (insert "#endif  // " macro_symbol "\n")
+        (goto-char point-bak)))
+
+(defun mji/class-new (class_name is_virtual)
+    (interactive
+        (list (read-string "Class name: ")
+              (y-or-n-p "Make virtual? ")))
+    (when (string=
+            ""
+            (buffer-substring-no-properties (line-beginning-position) (line-end-position)))
+        (move-end-of-line nil)
+        (open-line 1))
+    (let ((point-bak (point)))
+        (insert "class " class_name " {\n")
+        (insert "\n")
+        (insert "}")
+        (goto-char point-bak)))
+
 ;;
 ;; Themes
 ;;

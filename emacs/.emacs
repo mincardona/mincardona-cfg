@@ -85,7 +85,8 @@
 (setq-default electric-indent-inhibit t)
 (global-set-key "\C-m" 'newline-and-indent)
 ;; delete indentation on backspace
-(setq backward-delete-char-untabify-method 'hungry)
+;(setq-default backward-delete-char-untabify-method 'hungry)
+(setq-default backward-delete-char-untabify-method nil)
 ;; don't indent in namespace{...}
 (c-set-offset 'innamespace 0)
 (setq-default fill-column 80)
@@ -271,9 +272,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   (quote
-    ("79bc32a7c8da2ca2dd33591df9485258293e0e6e03d0ff4a2403a6882dcfdb2b" default)))
- '(package-selected-packages (quote (vscode-dark-plus-theme use-package diminish))))
+   '("79bc32a7c8da2ca2dd33591df9485258293e0e6e03d0ff4a2403a6882dcfdb2b" default))
+ '(package-selected-packages '(vscode-dark-plus-theme use-package diminish)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

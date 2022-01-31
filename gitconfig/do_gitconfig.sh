@@ -11,14 +11,18 @@ git config --global alias.gr "log --graph --decorate --all --date=short --format
 git config --global --unset alias.logdiff
 git config --global --unset alias.logstat
 git config --global --unset alias.logcell
+git config --global --unset alias.log-line
+git config --global --unset alias.log-short
+git config --global --unset alias.log-med
+git config --global --unset alias.log-full
 
 # ignore whitespace: -w (--ignore-all-space)
 # graph: --graph
 # full commit hashes: --no-abbrev-commit
-git config --global alias.log-line "log --format='%C(auto) %h %d %ad  %s' --abbrev-commit --decorate --date=format-local:'%Y-%m-%d %H:%M:%S'"
-git config --global alias.log-short "log --format=short --compact-summary --abbrev-commit --decorate --date=local"
-git config --global alias.log-med "log --format=medium --compact-summary --abbrev-commit --decorate --date=local"
-git config --global alias.log-full "log --format=medium -p --compact-summary --abbrev-commit --decorate --date=local"
+git config --global alias.logline "log --pretty=format:'%C(auto)%h%d [%an c.%cd]  %s' --date=format-local:'%Y-%m-%d'"
+git config --global alias.logshort "log --pretty=format:'%C(green)commit %C(auto)%h%d%nAuthor: %an <%ae>%nC.Date: %cd%n%n%w(0,4,4)%s%n%n%-b' --date=local"
+git config --global alias.logmed "log --pretty=format:'%C(green)commit %C(auto)%h%d%nAuthor: %an <%ae>%nC.Date: %cd%n%n%w(0,4,4)%s%n%n%-b' --compact-summary --date=local"
+git config --global alias.logfull "log --pretty=format:'%C(green)commit %C(auto)%H%d%nAuthor: %an <%ae>%nC.Date: %cd%n%n%w(0,4,4)%s%n%n%-b' --compact-summary --date=local -p"
 
 git config --global merge.conflictstyle diff3
 
@@ -33,6 +37,7 @@ git config --global alias.mkbr "checkout -b"
 git config --global alias.cob "checkout -b"
 git config --global alias.dh "diff HEAD"
 git config --global alias.cm "commit"
+git config --global alias.sw "switch"
 
 # https://stackoverflow.com/a/42636500
 # add these to gitconfig to use ediff as a difftool

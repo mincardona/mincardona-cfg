@@ -3,6 +3,7 @@ alias temacs='emacs -nw'
 alias tcemacs='emacsclient -nw -a=""'
 alias demacs='emacs --daemon'
 alias kemacs='emacsclient --eval "(kill-emacs)"'
+alias tvim='vim -X'
 alias ping4='ping -c 4'
 
 mkcd() {

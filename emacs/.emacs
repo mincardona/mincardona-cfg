@@ -15,6 +15,8 @@
 ;; don't create backup files and clutter
 (setq auto-save-default nil)
 
+;; show parentheses when the cursor is on them
+(show-paren-mode t)
 ;(setq-default make-backup-files nil)
 ;; set the cursor type
 (setq-default cursor-type '(bar . 1))
@@ -108,7 +110,13 @@
 
 ;; enable extensions to the dired mode
 (add-hook 'dired-load-hook
-	  (function (lambda () (load "dired-x"))))
+  (function (lambda ()
+    (load "dired-x")
+    ; can still use e for the alternate functionality
+    (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)
+    (define-key dired-mode-map (kbd "f") 'dired-find-alternate-file)
+    (define-key dired-mode-map (kbd "<mouse-2>") 'dired-find-alternate-file)
+)))
 
 ;; use ibuffer instead of buffermenu
 (global-set-key (kbd "C-x C-b") 'ibuffer)
@@ -119,6 +127,9 @@
 ;; comment and uncomment lines and regions
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Comment-Commands.html
 (global-set-key (kbd "C-c /") 'comment-line)
+
+;; kill entire line from anywhere
+(global-set-key (kbd "M-p") 'kill-whole-line)
 
 ;; packages
 (unless (package-installed-p 'diminish)
@@ -205,6 +216,10 @@
     (setq-default clang-format-fallback-style "none")
     (global-set-key (kbd "C-c f") 'clang-format-region))
 
+(use-package mwim
+    :config
+    (global-set-key (kbd "C-a") 'mwim-beginning))
+
 ;;
 ;; Custom functions
 ;;
@@ -260,6 +275,16 @@
         (insert "}")
         (goto-char point-bak)))
 
+(defun mji/scons-git ()
+    "Run scons on the current Git repository"
+    (interactive)
+    (compile "scons -C \"$(git rev-parse --show-toplevel)\""))
+
+(defun mji/scons-git-debug ()
+    "Run scons DEBUG=1 on the current Git repository"
+    (interactive)
+    (compile "scons -C \"$(git rev-parse --show-toplevel)\" DEBUG=1"))
+
 ;;
 ;; Themes
 ;;
@@ -280,3 +305,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+(put 'dired-find-alternate-file 'disabled nil)

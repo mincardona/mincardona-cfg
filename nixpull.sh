@@ -53,4 +53,7 @@ cp -p "sublime/jcd.tmTheme" ~/.config/sublime-text-3/Packages/Custom\ Color\ Sch
 # tmux
 cp -p "tmux/.tmux.conf" ~
 
+# kate
+cp -p kate/katerc ~/.config/katerc
+
 echo "done."

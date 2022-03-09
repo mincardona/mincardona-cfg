@@ -41,4 +41,4 @@ REM COPY /Y vscode\extensions\michaelincardona.maclipse\themes\maclipse.json "%U
 REM COPY /Y vscode\extensions\michaelincardona.maclipse\package.json "%USERPROFILE%\.vscode\extensions\michaelincardona.maclipse\"
 
 REM Kate
-COPY /Y kate\.katerc "%LOCALAPPDATA%\katerc"
+COPY /Y kate\katerc "%LOCALAPPDATA%\katerc"

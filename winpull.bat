@@ -39,3 +39,6 @@ REM COPY /Y vscode\keybindings.json "%APPDATA%\Code\User\"
 REM MKDIR "%USERPROFILE%\.vscode\extensions\michaelincardona.maclipse\themes"
 REM COPY /Y vscode\extensions\michaelincardona.maclipse\themes\maclipse.json "%USERPROFILE%\.vscode\extensions\michaelincardona.maclipse\themes\"
 REM COPY /Y vscode\extensions\michaelincardona.maclipse\package.json "%USERPROFILE%\.vscode\extensions\michaelincardona.maclipse\"
+
+REM Kate
+COPY /Y kate\.katerc "%LOCALAPPDATA%\katerc"

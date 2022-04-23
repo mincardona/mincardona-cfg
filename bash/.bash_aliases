@@ -7,9 +7,7 @@ alias tvim='vim -X'
 alias ping4='ping -c 4'
 
 mkcd() {
-    mkdir "$1"
-    cd "$1"
-    pwd
+    mkdir -p "$1" && cd "$1" && pwd
 }
 
 math() {

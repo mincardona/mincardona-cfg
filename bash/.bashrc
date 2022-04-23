@@ -14,10 +14,18 @@ else
     IS_WSL="NO"
 fi
 
+IS_BSD_LIKE="$(uname -s)"
+if [[ "$IS_BSD_LIKE" = *BSD* || "$IS_BSD_LIKE" = Darwin ]]; then
+    IS_BSD_LIKE=YES
+else
+    IS_BSD_LIKE=NO
+fi
+
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
-
+# disable escape sequences in echo unless -e is passed
+shopt -u xpg_echo
 # enables "**" globbing
 shopt -s globstar
 # enables +(...), *(...), etc. globbing
@@ -31,13 +39,15 @@ HISTSIZE=1000
 HISTFILESIZE=2000
 
 # detect color support
-COLOR_TERM=no
 case "$TERM" in
     xterm|xterm-color|*-256color) COLOR_TERM=yes
     ;;
 esac
+if [[ -n "$COLORTERM" || -n "$CLI_COLOR" ]]; then
+    COLOR_TERM=yes
+fi
 
-if [ "$COLOR_TERM" = yes ]; then
+if [ -n "$COLOR_TERM" ]; then
     if [ -x /usr/bin/dircolors ]; then
         test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     fi
@@ -47,15 +57,12 @@ if [ "$COLOR_TERM" = yes ]; then
     alias ll='ls --color=auto -Flh'
     alias lla='ls --color=auto -Flah'
 
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
 
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
-
-    export COLORTERM="$COLOR_TERM"
-    export CLICOLOR="$COLOR_TERM"
 else
     alias ls='ls -Fh'
     alias la='ls -FAh'
@@ -64,9 +71,13 @@ else
 fi
 
 if [ "$IS_WSL" = YES ] && [ -n "$LS_COLORS" ]; then
-    # Remove the green background from other-writeable, non-sticky dirs
+    # Remove the green background from other-writeable, non-sticky dirs.
     # These are too common on WSL for the green background to be useful
     LS_COLORS="$(sed -r 's/(^|:)ow=[0-9;]+/\1ow=01;34/' <<<$LS_COLORS)"
+fi
+
+if [[ "$IS_BSD_LIKE" = YES ]]; then
+    LSCOLORS=ExGxFxdaCxDaDahbadacec
 fi
 
 # make less more friendly for non-text input files, see lesspipe(1)
@@ -151,3 +162,7 @@ fi
 if [ -f ~/.bash_platform ]; then
     source ~/.bash_platform
 fi
+
+unset IS_WSL
+unset IS_BSD_LIKE
+unset COLOR_TERM

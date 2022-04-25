@@ -43,7 +43,7 @@ case "$TERM" in
     xterm|xterm-color|*-256color) COLOR_TERM=yes
     ;;
 esac
-if [[ -n "$COLORTERM" || -n "$CLI_COLOR" ]]; then
+if [[ -n "$COLORTERM" || -n "$CLI_COLOR" || -n "$CLICOLOR" ]]; then
     COLOR_TERM=yes
 fi
 
@@ -73,11 +73,17 @@ fi
 if [ "$IS_WSL" = YES ] && [ -n "$LS_COLORS" ]; then
     # Remove the green background from other-writeable, non-sticky dirs.
     # These are too common on WSL for the green background to be useful
-    LS_COLORS="$(sed -r 's/(^|:)ow=[0-9;]+/\1ow=01;34/' <<<$LS_COLORS)"
+    export LS_COLORS="$(sed -r 's/(^|:)ow=[0-9;]+/\1ow=01;34/' <<<$LS_COLORS)"
 fi
 
 if [[ "$IS_BSD_LIKE" = YES ]]; then
-    LSCOLORS=ExGxFxdaCxDaDahbadacec
+    export LSCOLORS=ExGxFxdaCxDaDahbadacec
+    if [[ -n "$COLOR_TERM" ]]; then
+        : ${CLICOLOR=1}
+        : ${COLORTERM=1}
+        export CLICOLOR
+        export COLORTERM
+    fi
 fi
 
 # make less more friendly for non-text input files, see lesspipe(1)
@@ -162,7 +168,3 @@ fi
 if [ -f ~/.bash_platform ]; then
     source ~/.bash_platform
 fi
-
-unset IS_WSL
-unset IS_BSD_LIKE
-unset COLOR_TERM

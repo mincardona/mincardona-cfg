@@ -63,7 +63,7 @@ case $TERM in
     xterm|xterm-color|*-256color) color_term=yes
     ;;
 esac
-if [[ -n $COLORTERM || -n $CLI_COLOR ]]; then
+if [[ -n $COLORTERM || -n $CLI_COLOR || -n $CLICOLOR ]]; then
     color_term=yes
 fi
 
@@ -104,11 +104,17 @@ fi
 if [[ -n $is_wsl && -n $LS_COLORS ]]; then
     # Remove the green background from other-writeable, non-sticky dirs.
     # These are too common on WSL for the green background to be useful
-    LS_COLORS="$(sed -r 's/(^|:)ow=[0-9;]+/\1ow=01;34/' <<<$LS_COLORS)"
+    export LS_COLORS="$(sed -r 's/(^|:)ow=[0-9;]+/\1ow=01;34/' <<<$LS_COLORS)"
 fi
 
-if [[ -n $is_bsd_like ]] ; then
-    LSCOLORS=ExGxFxdaCxDaDahbadacec
+if [[ -n $is_bsd_like ]]; then
+    export LSCOLORS=ExGxFxdaCxDaDahbadacec
+    if [[ -n $color_term ]]; then
+        : ${CLICOLOR=1}
+        : ${COLORTERM=1}
+        export CLICOLOR
+        export COLORTERM
+    fi
 fi
 
 # keyboard shortcuts
@@ -214,7 +220,3 @@ function () {
         fi
     done
 }
-
-unset is_wsl
-unset is_bsd_like
-unset color_term

@@ -17,6 +17,7 @@ bold-color-same-as-fg=true
 background-color='rgb(0,0,0)'
 background-transparency-percent=12
 audible-bell=false
+bold-is-bright=true
 
 [:afa52e99-ff6c-4665-a456-e2a27daa6e40]
 background-color='rgb(255,255,255)'

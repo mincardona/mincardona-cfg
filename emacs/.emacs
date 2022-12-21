@@ -184,6 +184,8 @@
   ))
 )
 
+(use-package protobuf-mode)
+
 ;(use-package lsp-mode
 ;    :commands (lsp lsp-deferred)
 ;    :hook (c++-mode . lsp-deferred) (c-mode . lsp-deferred)

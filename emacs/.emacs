@@ -150,8 +150,30 @@
 
 (defconst redcom-c-style
   '("Google"
-  (c-basic-offset . 4))
-)
+  (c-basic-offset . 4)
+  (c-offsets-alist
+    (access-label . *)      ; Guessed value
+    (arglist-cont . 0)      ; Guessed value
+    (arglist-intro . ++)    ; Guessed value
+    (case-label . +)        ; Guessed value
+    (class-close . 0)       ; Guessed value
+    (defun-block-intro . +) ; Guessed value
+    (defun-close . 0)       ; Guessed value
+    (inclass . +)           ; Guessed value
+    (inline-close . 0)      ; Guessed value
+    (innamespace . 0)       ; Guessed value
+    (member-init-cont . 0)  ; Guessed value
+    (member-init-intro . +) ; Guessed value
+    (namespace-close . 0)   ; Guessed value
+    (statement . 0)         ; Guessed value
+    (statement-block-intro . +) ; Guessed value
+    (statement-case-intro . +) ; Guessed value
+    (statement-cont . ++)      ; Guessed value
+    (topmost-intro . 0)     ; Guessed value
+    (topmost-intro-cont . ++) ; Guessed value
+  )
+))
+
 (use-package google-c-style
   :config
   ;(add-hook 'c-mode-common-hook 'google-set-c-style)

@@ -131,6 +131,8 @@
 ;; kill entire line from anywhere
 (global-set-key (kbd "M-p") 'kill-whole-line)
 
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+
 ;; packages
 (unless (package-installed-p 'diminish)
   (package-refresh-contents)

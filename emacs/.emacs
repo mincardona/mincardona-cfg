@@ -154,7 +154,7 @@
   '("Google"
   (c-basic-offset . 4)
   (c-offsets-alist
-    (access-label . *)      ; Guessed value
+    (access-label . /)      ; for inclass and access-label combined
     (arglist-cont . 0)      ; Guessed value
     (arglist-intro . ++)    ; Guessed value
     (case-label . +)        ; Guessed value
@@ -172,7 +172,7 @@
     (statement-case-intro . +) ; Guessed value
     (statement-cont . ++)      ; Guessed value
     (topmost-intro . 0)     ; Guessed value
-    (topmost-intro-cont . ++) ; Guessed value
+    (topmost-intro-cont . 0) ; was guessed as ++
   )
 ))
 

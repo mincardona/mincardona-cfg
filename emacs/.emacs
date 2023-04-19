@@ -131,6 +131,8 @@
 ;; kill entire line from anywhere
 (global-set-key (kbd "M-p") 'kill-whole-line)
 
+(global-set-key (kbd "C-c o") 'ff-find-other-file)
+
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
 ;; packages

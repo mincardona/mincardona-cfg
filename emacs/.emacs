@@ -182,7 +182,7 @@
   :config
   ;(add-hook 'c-mode-common-hook 'google-set-c-style)
   ;(add-hook 'c-mode-common-hook (lambda () (setq-default c-basic-offset my-indent)))
-  (add-hook 'c-mode-common-hook '(lambda ()
+  (add-hook 'c-mode-common-hook #'(lambda ()
     (c-add-style "Google" google-c-style)
     (c-add-style "redcom" redcom-c-style t)
   ))
@@ -240,7 +240,7 @@
 (use-package clang-format
     :config
     (setq-default clang-format-style "file")
-    (setq-default clang-format-executable "/usr/local/bin/clang-format10")
+    (setq-default clang-format-executable "/usr/local/bin/clang-format13")
     (setq-default clang-format-fallback-style "none")
     (global-set-key (kbd "C-c f") 'clang-format-region))
 

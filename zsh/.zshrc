@@ -136,6 +136,8 @@ alias demacs='emacs --daemon'
 alias kemacs='emacsclient --eval "(kill-emacs)"'
 alias tvim='vim -X'
 alias ping4='ping -c 4'
+alias follow='less --follow-name +F'
+alias followstdin='less +F'
 
 function mkcd {
     mkdir -p $1 && cd $1 && pwd

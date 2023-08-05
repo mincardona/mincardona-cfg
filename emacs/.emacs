@@ -235,12 +235,14 @@
 (use-package web-mode
     :config
     (setq-default web-mode-enable-current-element-highlight t)
-    (add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode)))
+    (add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
+    (add-to-list 'auto-mode-alist '("\\.s?css\\'" . web-mode))
+)
 
 (use-package clang-format
     :config
     (setq-default clang-format-style "file")
-    (setq-default clang-format-executable "/usr/local/bin/clang-format13")
+    (setq-default clang-format-executable "/usr/local/bin/clang-format14")
     (setq-default clang-format-fallback-style "none")
     (global-set-key (kbd "C-c f") 'clang-format-region))
 

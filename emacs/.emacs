@@ -287,7 +287,7 @@
         (insert "#ifndef " macro_symbol "\n#define " macro_symbol "\n")
         (goto-char (point-max))
         (open-line 1)
-        (insert "#endif  // " macro_symbol "\n")
+        (insert "#endif  // " macro_symbol)
         (goto-char point-bak)))
 
 (defun mji/class-new (class_name is_virtual)

@@ -15,6 +15,7 @@ git config --global --unset alias.log-line
 git config --global --unset alias.log-short
 git config --global --unset alias.log-med
 git config --global --unset alias.log-full
+git config --global --unset alias.cob
 
 # ignore whitespace: -w (--ignore-all-space)
 # graph: --graph

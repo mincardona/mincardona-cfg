@@ -228,9 +228,15 @@
   ;https://www.emacswiki.org/emacs/AutoModeAlist
   (add-to-list 'auto-mode-alist '("/new-commit\\(<.*>\\)?\\'" . markdown-mode))
   (add-to-list 'auto-mode-alist '("/differential-update-comments\\'" . markdown-mode)))
-(use-package git-commit
+
+(use-package magit
   :config
-  (setq-default git-commit-major-mode 'markdown-mode))
+  (remove-hook 'server-switch-hook 'magit-commit-diff)
+  (remove-hook 'with-editor-filter-visit-hook 'magit-commit-diff)
+  (magit-auto-revert-mode 0)
+  (global-auto-revert-mode t)
+  (setq-default git-commit-major-mode 'markdown-mode)
+)
 
 (use-package web-mode
     :config
@@ -242,7 +248,7 @@
 (use-package clang-format
     :config
     (setq-default clang-format-style "file")
-    (setq-default clang-format-executable "/usr/local/bin/clang-format14")
+    (setq-default clang-format-executable "/usr/local/bin/clang-format15")
     (setq-default clang-format-fallback-style "none")
     (global-set-key (kbd "C-c f") 'clang-format-region))
 

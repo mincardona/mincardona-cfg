@@ -118,6 +118,8 @@
     (define-key dired-mode-map (kbd "<mouse-2>") 'dired-find-alternate-file)
 )))
 
+(put 'dired-find-alternate-file 'disabled nil)
+
 ;; use ibuffer instead of buffermenu
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
@@ -131,9 +133,21 @@
 ;; kill entire line from anywhere
 (global-set-key (kbd "M-p") 'kill-whole-line)
 
-(global-set-key (kbd "C-c o") 'ff-find-other-file)
+;; This variable seems to have no effect
+;(setq-default ff-ignore-include t)
+;(global-set-key (kbd "C-c o") 'ff-find-other-file)
+
+;; Ignore #includes when finding other file
+(defun my-ff-find-other-file ()
+  (interactive)
+  (ff-find-other-file nil t))
+(global-set-key (kbd "C-c o") 'my-ff-find-other-file)
 
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+
+;; Make search case-sensitive
+;; To toggle case sensitivity of the search, type M-c or M-s c while searching
+(setq-default case-fold-search nil)
 
 ;; packages
 (unless (package-installed-p 'diminish)
@@ -341,4 +355,3 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-(put 'dired-find-alternate-file 'disabled nil)

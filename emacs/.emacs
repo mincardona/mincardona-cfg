@@ -15,6 +15,8 @@
 ;; don't create backup files and clutter
 (setq auto-save-default nil)
 
+(global-auto-revert-mode 1)
+
 ;; show parentheses when the cursor is on them
 (show-paren-mode t)
 ;(setq-default make-backup-files nil)
@@ -245,16 +247,23 @@
   :config
   ;https://www.emacswiki.org/emacs/AutoModeAlist
   (add-to-list 'auto-mode-alist '("/new-commit\\(<.*>\\)?\\'" . markdown-mode))
-  (add-to-list 'auto-mode-alist '("/differential-update-comments\\'" . markdown-mode)))
+  (add-to-list 'auto-mode-alist '("/differential-update-comments\\'" . markdown-mode))
+  (add-to-list 'auto-mode-alist '("/COMMIT_EDITMSG\\'" . markdown-mode)))
 
-(use-package magit
-  :config
-  (remove-hook 'server-switch-hook 'magit-commit-diff)
-  (remove-hook 'with-editor-filter-visit-hook 'magit-commit-diff)
-  (magit-auto-revert-mode 0)
-  (global-auto-revert-mode t)
-  (setq-default git-commit-major-mode 'markdown-mode)
-)
+;(use-package magit
+;  :config
+;  (remove-hook 'server-switch-hook 'magit-commit-diff)
+;  (remove-hook 'with-editor-filter-visit-hook 'magit-commit-diff)
+;  (magit-auto-revert-mode 0)
+;  (global-auto-revert-mode t)
+;  (setq-default magit-refresh-status-buffer nil)
+;  (setq-default git-commit-major-mode 'markdown-mode)
+;)
+
+;(use-package git-commit
+;  :config
+;  (setq-default git-commit-major-mode 'markdown-mode)
+;)
 
 (use-package web-mode
     :config

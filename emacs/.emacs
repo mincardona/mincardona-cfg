@@ -263,12 +263,34 @@
     (add-to-list 'auto-mode-alist '("\\.s?css\\'" . web-mode))
 )
 
-(use-package clang-format
-    :config
-    (setq-default clang-format-style "file")
-    (setq-default clang-format-executable "/usr/local/bin/clang-format15")
-    (setq-default clang-format-fallback-style "none")
-    (global-set-key (kbd "C-c f") 'clang-format-region))
+; assumes no leading zeroes in version number
+(defun find-clang-format (path)
+    (setq cf_max 0)
+    (dolist (fname (directory-files path nil "\\`clang-format[0-9]+\\'"))
+        (save-match-data
+            (and (string-match "\\`clang-format\\([0-9]+\\)\\'" fname)
+                 (setq cf_max (max cf_max
+                                   (string-to-number (match-string 1 fname))
+                              )
+                 )
+            )
+        )
+    )
+    (if (= cf_max 0)
+        (concat path "/clang-format")
+        (concat path "/clang-format" (number-to-string cf_max))
+    )
+)
+
+(let ((cf_path (find-clang-format "/usr/local/bin")))
+     (message "find-clang-format returned %s" cf_path)
+     (use-package clang-format
+     :config
+        (setq-default clang-format-style "file")
+        (setq-default clang-format-executable cf_path)
+        (setq-default clang-format-fallback-style "none")
+        (global-set-key (kbd "C-c f") 'clang-format-region))
+)
 
 (use-package mwim
     :config

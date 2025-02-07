@@ -52,10 +52,14 @@
 ;  (goto-char (point-max)))
 
 (require 'package)
+
+(setq package-install-upgrade-built-in t)
+
 (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
+(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/"))
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
+(add-to-list 'package-archives '("nongnu-elpa" . "https://elpa.nongnu.org/nongnu/"))
 
 ;; fix gnu elpa connection
 (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")

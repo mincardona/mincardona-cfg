@@ -383,7 +383,8 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    '("79bc32a7c8da2ca2dd33591df9485258293e0e6e03d0ff4a2403a6882dcfdb2b" default))
- '(package-selected-packages '(vscode-dark-plus-theme use-package diminish)))
+ '(package-selected-packages
+   '(ws-butler web-mode vscode-dark-plus-theme verilog-mode use-package tramp soap-client protobuf-mode org mwim markdown-mode lua-mode idlwave google-c-style faceup erc eglot diminish clang-format)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

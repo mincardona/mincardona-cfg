@@ -38,6 +38,7 @@ git config --global alias.mkbr "checkout -b"
 git config --global alias.dh "diff HEAD"
 git config --global alias.cm "commit"
 git config --global alias.sw "switch"
+git config --global alias.cff "clang-format -f"
 
 # https://stackoverflow.com/a/42636500
 # add these to gitconfig to use ediff as a difftool

@@ -204,20 +204,15 @@
 
 (use-package google-c-style
   :config
-  ;(add-hook 'c-mode-common-hook 'google-set-c-style)
-  ;(add-hook 'c-mode-common-hook (lambda () (setq-default c-basic-offset my-indent)))
-  (add-hook 'c-mode-common-hook #'(lambda ()
-    (c-add-style "Google" google-c-style)
-    (c-add-style "redcom" redcom-c-style t)
-  ))
-)
-
-; using Google style now
-(setq-default c-default-style '(
+  (c-add-style "Google" google-c-style)
+  (c-add-style "redcom" redcom-c-style)
+  (setq-default c-default-style '(
     (java-mode . "java")
+    (awk-mode . "awk")
     (c-mode . "redcom")
     (c++-mode . "redcom")
-))
+  ))
+)
 
 (use-package protobuf-mode)
 
@@ -286,7 +281,7 @@
 ; assumes no leading zeroes in version number
 (defun find-clang-format (path)
     (if (file-directory-p path)
-    (
+    (progn
         (setq cf_max 0)
         (dolist (fname (directory-files path nil "\\`clang-format[0-9]+\\'"))
             (save-match-data

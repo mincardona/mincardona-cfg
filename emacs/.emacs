@@ -274,20 +274,25 @@
 
 ; assumes no leading zeroes in version number
 (defun find-clang-format (path)
-    (setq cf_max 0)
-    (dolist (fname (directory-files path nil "\\`clang-format[0-9]+\\'"))
-        (save-match-data
-            (and (string-match "\\`clang-format\\([0-9]+\\)\\'" fname)
-                 (setq cf_max (max cf_max
-                                   (string-to-number (match-string 1 fname))
-                              )
-                 )
+    (if (file-directory-p path)
+    (
+        (setq cf_max 0)
+        (dolist (fname (directory-files path nil "\\`clang-format[0-9]+\\'"))
+            (save-match-data
+                (and (string-match "\\`clang-format\\([0-9]+\\)\\'" fname)
+                     (setq cf_max (max cf_max
+                                       (string-to-number (match-string 1 fname))
+                                  )
+                     )
+                )
             )
         )
+        (if (= cf_max 0)
+            (concat path "/clang-format")
+            (concat path "/clang-format" (number-to-string cf_max))
+        )
     )
-    (if (= cf_max 0)
-        (concat path "/clang-format")
-        (concat path "/clang-format" (number-to-string cf_max))
+    "/dev/null"
     )
 )
 

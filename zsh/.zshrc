@@ -147,6 +147,11 @@ function math() {
     echo $1 | bc -l
 }
 
+# Add Rust stuff to path
+if [[ -f ~/.cargo/env ]]; then
+    source ~/.cargo/env
+fi
+
 if [[ -f ~/.zsh_platform ]]; then
     source ~/.zsh_platform
 fi

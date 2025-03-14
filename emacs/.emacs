@@ -77,8 +77,6 @@
 ;; Whitespace and indentation stuff
 ;;
 
-; using Google style now
-(setq-default c-default-style "java")
 (defvar my-indent 4 "My indentation offset")
 (global-set-key (kbd "TAB") 'tab-to-tab-stop)
 (setq tab-stop-list (number-sequence my-indent 200 my-indent))
@@ -176,7 +174,7 @@
   '("Google"
   (c-basic-offset . 4)
   (c-offsets-alist
-    (access-label . /)      ; for inclass and access-label combined
+    (access-label . *)      ; for inclass and access-label combined
     (arglist-cont . 0)      ; Guessed value
     (arglist-intro . ++)    ; Guessed value
     (case-label . +)        ; Guessed value
@@ -195,6 +193,9 @@
     (statement-cont . ++)      ; Guessed value
     (topmost-intro . 0)     ; Guessed value
     (topmost-intro-cont . 0) ; was guessed as ++
+    (inextern-lang . 0)
+    (extern-lang-open . 0)
+    (extern-lang-close . 0)
   )
 ))
 
@@ -207,6 +208,13 @@
     (c-add-style "redcom" redcom-c-style t)
   ))
 )
+
+; using Google style now
+(setq-default c-default-style '(
+    (java-mode . "java")
+    (c-mode . "redcom")
+    (c++-mode . "redcom")
+))
 
 (use-package protobuf-mode)
 

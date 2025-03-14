@@ -18,7 +18,7 @@
 147,161,161     #93a1a1
 253,246,227     #fdf6e3
 
-Enable "use bright" or similar setting
+Enable "use bright"/"use bright and bold for intense text" or similar setting
 
 Set text color to 255,255,255 and background color to 0,0,0
 

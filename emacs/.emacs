@@ -44,6 +44,9 @@
 (global-set-key (kbd "S-C-<down>") 'shrink-window)
 (global-set-key (kbd "S-C-<up>") 'enlarge-window)
 
+; I keep hitting this and triggering exchange-point-and-mark accidentally
+(global-set-key (kbd "C-x C-x") nil)
+
 ;; move between windows using S-<left>, etc
 (when (fboundp 'windmove-default-keybindings)
       (windmove-default-keybindings))

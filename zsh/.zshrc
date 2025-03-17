@@ -58,6 +58,9 @@ HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 
+# use less instead of more
+export PAGER=less
+
 # color settings
 case $TERM in
     xterm|xterm-color|*-256color) color_term=yes

@@ -39,6 +39,13 @@ HISTSIZE=1000
 HISTFILESIZE=2000
 
 # detect color support
+
+case "$TERM" in
+    xterm | xterm-*color)
+        export TERM=xterm-256color
+        ;;
+esac
+
 case "$TERM" in
     xterm|xterm-color|*-256color) COLOR_TERM=yes
     ;;

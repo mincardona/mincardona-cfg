@@ -36,7 +36,12 @@ precmd() {
 }
 
 # perform substitutions in the prompt string
+# 0-7: standard colors (black, red, green, yellow, blue, magenta, cyan, white)
+# 8-15: intense colors
 setopt prompt_subst
+# Works with windows terminal except that colored output from programs is still
+# wrong. Must be a Windows Terminal bug.
+#PROMPT='%F{10}%n@%m%f %F{12}%3~%f%F{13}${vcs_info_msg_0_}%f%(?.. %F{1}[%?]%f)'$'\n''%(!.%F{9}#%f.%F{12}$%f) '
 PROMPT='%B%F{green}%n@%m %F{blue}%3~%F{magenta}${vcs_info_msg_0_}%b%(?.. %F{red}[%?])'$'\n''%B%(!.%F{red}#.%F{blue}$)%f%b '
 
 # completion settings
@@ -62,6 +67,14 @@ SAVEHIST=1000
 export PAGER=less
 
 # color settings
+
+# upgrade xterm to 256 colors
+case $TERM in
+    xterm | xterm-*color)
+        export TERM=xterm-256color
+        ;;
+esac
+
 case $TERM in
     xterm|xterm-color|*-256color) color_term=yes
     ;;

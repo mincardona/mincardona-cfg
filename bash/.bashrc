@@ -166,6 +166,11 @@ bind '"\t":menu-complete'
 bind '"\e[Z":menu-complete-backward'
 export PAGER='less'
 
+# Add Rust stuff to path
+if [[ -f ~/.cargo/env ]]; then
+    source ~/.cargo/env
+fi
+
 # Alias definitions from a separate file
 if [ -f ~/.bash_aliases ]; then
     source ~/.bash_aliases

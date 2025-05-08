@@ -47,6 +47,10 @@
 ; I keep hitting this and triggering exchange-point-and-mark accidentally
 (global-set-key (kbd "C-x C-x") nil)
 
+; Swap these shortcuts
+(global-set-key (kbd "M-;") 'comment-line)
+(global-set-key (kbd "C-x C-;") 'comment-dwim)
+
 ;; move between windows using S-<left>, etc
 (when (fboundp 'windmove-default-keybindings)
       (windmove-default-keybindings))

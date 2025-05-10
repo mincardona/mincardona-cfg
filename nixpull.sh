@@ -36,12 +36,12 @@ if [ -d "~/Templates" ]; then
 fi
 
 # sublime
-mkdir -p ~/.config/sublime-text-3/Packages/User/
-mkdir -p ~/.config/sublime-text-3/Packages/Custom\ Color\ Schemes/
-cp -p "sublime/Preferences.sublime-settings" ~/.config/sublime-text-3/Packages/User/
-cp -p "sublime/Default.sublime-keymap" ~/.config/sublime-text-3/Packages/User/
-cp -p "sublime/Package Control.sublime-settings" ~/.config/sublime-text-3/Packages/User/
-cp -p "sublime/jcd.tmTheme" ~/.config/sublime-text-3/Packages/Custom\ Color\ Schemes/
+# mkdir -p ~/.config/sublime-text-3/Packages/User/
+# mkdir -p ~/.config/sublime-text-3/Packages/Custom\ Color\ Schemes/
+# cp -p "sublime/Preferences.sublime-settings" ~/.config/sublime-text-3/Packages/User/
+# cp -p "sublime/Default.sublime-keymap" ~/.config/sublime-text-3/Packages/User/
+# cp -p "sublime/Package Control.sublime-settings" ~/.config/sublime-text-3/Packages/User/
+# cp -p "sublime/jcd.tmTheme" ~/.config/sublime-text-3/Packages/Custom\ Color\ Schemes/
 
 # vscode - now using settings sync instead
 # mkdir -p ~/.config/Code/User

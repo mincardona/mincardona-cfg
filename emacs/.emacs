@@ -190,7 +190,7 @@
     (defun-close . 0)       ; Guessed value
     (inclass . +)           ; Guessed value
     (inline-close . 0)      ; Guessed value
-    (innamespace . [0])     ; was guessed as 0
+    (innamespace . 0)       ; Guessed value
     (member-init-cont . 0)  ; Guessed value
     (member-init-intro . +) ; Guessed value
     (namespace-close . 0)   ; Guessed value
@@ -217,6 +217,8 @@
     (c++-mode . "redcom")
   ))
 )
+(c-set-offset 'innamespace 0)
+(c-set-offset 'inextern-lang 0)
 
 (use-package protobuf-mode)
 

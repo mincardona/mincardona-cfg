@@ -56,7 +56,7 @@ inoremap <C-L> <Esc>
 
 " TODO: cmap/cnoremap and omap/onoremap mappings?
 
-" use S-arrow to move windows
+" use S-arrow to move between windows
 nnoremap <silent> <S-Right> <C-w>l
 nnoremap <silent> <S-Left> <C-w>h
 nnoremap <silent> <S-Up> <C-w>k
@@ -77,36 +77,10 @@ vnoremap <C-a> ^
 " popup menu is open (<C-e> exits the popup menu)
 inoremap <expr> <C-e> pumvisible() ? '<C-e>' : '<End>'
 vnoremap <expr> <C-e> pumvisible() ? '<C-e>' : '<End>'
-inoremap <C-f> <Right>
-vnoremap <C-f> <Right>
-inoremap <C-b> <Left>
-vnoremap <C-b> <Left>
-inoremap <C-n> <Down>
-vnoremap <C-n> <Down>
-inoremap <C-p> <Up>
-vnoremap <C-p> <Up>
 
-" rebind completion popup because <C-n> and <C-p> are remapped
-inoremap <C-_> <C-n>
-inoremap <C-j> <C-p>
-inoremap <expr> <Down> pumvisible() ? '<C-n>' : '<Down>'
-inoremap <expr> <Up> pumvisible() ? '<C-p>' : '<Up>'
-inoremap <expr> <CR> pumvisible() ? '<C-y>' : '<CR>'
-
+" enter text command
 inoremap <M-x> <C-o>:
 vnoremap <M-x> :
-
-inoremap <C-x>2 <C-o><C-w>s
-inoremap <C-x>3 <C-o><C-w>v
-inoremap <C-x>0 <C-o><C-w>c
-inoremap <C-x>1 <C-o><C-w>o
-inoremap <C-x>+ <C-o><C-w>=
-inoremap <C-x>o <C-o><C-w>w
-
-inoremap <C-x><C-f> <C-o>:hide edit<Space>
-
-inoremap <C-Space> <C-o>v
-
 
 " http://vim.wikia.com/wiki/Map_Ctrl-S_to_save_current_or_new_files
 command -nargs=0 -bar SmartSave
@@ -172,7 +146,7 @@ set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
 set statusline+=\[%{&fileformat}\]
 set statusline+=\ %-14.(%l,%c%V%)
 set statusline+=\ %P
-
+" always display status bar
 set laststatus=2
 
 " code folding
@@ -188,6 +162,10 @@ set wildmode=list:full
 " enable mouse control
 set mouse=a
 
+" cursor settings (https://vimhelp.org/term.txt.html)
+" terminal code: use bar cursor in insert mode
 let &t_SI = "\<Esc>[5 q"
+" terminal code: use underline cursor in replace mode
 let &t_SR = "\<Esc>[3 q"
+" terminal code: use block cursor otherwise
 let &t_EI = "\<Esc>[1 q"

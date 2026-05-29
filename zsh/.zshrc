@@ -66,6 +66,9 @@ SAVEHIST=1000
 # use less instead of more
 export PAGER=less
 
+# disable XON/XOFF to allow keys like C-s
+stty -ixon
+
 # color settings
 
 # upgrade xterm to 256 colors

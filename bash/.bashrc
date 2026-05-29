@@ -38,6 +38,9 @@ shopt -s histappend
 HISTSIZE=1000
 HISTFILESIZE=2000
 
+# disable XON/XOFF to allow keys like C-s
+stty -ixon
+
 # detect color support
 
 case "$TERM" in

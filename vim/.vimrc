@@ -25,6 +25,9 @@ set whichwrap+=<,>,h,l,[,]   " allow using arrow keys to navigate over EOL
 " insert mode
 set backspace=indent,eol,start
 
+" don't close old buffers when opening a new one
+set hidden
+
 " when splitting, prefer to create new windows on the bottom and the right
 set splitright
 set splitbelow
@@ -64,8 +67,10 @@ inoremap <silent> <S-Up> <C-o><C-w>k
 inoremap <silent> <S-Down> <C-o><C-w>j
 
 " <M-m> and <C-a> are switched here relative to Emacs
-inoremap <M-m> <Home>
-vnoremap <M-m> <Home>
+" Go to absolute beginning of line (seems broken?)
+inoremap <M-m> <C-o>0
+vnoremap <M-m> 0
+" Go to start of line after whitespace
 inoremap <C-a> <C-o>^
 vnoremap <C-a> ^
 " make <C-e> go to end-of-line (like Emacs) unless the completion

@@ -16,3 +16,4 @@ math() {
 
 # allows executing another alias through sudo
 alias sudo='sudo '
+alias arcan='arcanist'

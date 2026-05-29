@@ -120,20 +120,28 @@ if [[ $is_bsd_like = *BSD* || $is_bsd_like = Darwin ]]; then
     is_bsd_like=YES
 fi
 
+# Don't print files with certain extensions in different colors.
+# Specifically, from $LS_COLORS, delete everything after and including the
+# first "*."
+LS_COLORS="$(sed -r 's/\*\..*//' <<<$LS_COLORS)"
+
 if [[ -n $is_wsl && -n $LS_COLORS ]]; then
     # Remove the green background from other-writeable, non-sticky dirs.
     # These are too common on WSL for the green background to be useful
-    export LS_COLORS="$(sed -r 's/(^|:)ow=[0-9;]+/\1ow=01;34/' <<<$LS_COLORS)"
+    LS_COLORS="$(sed -r 's/(^|:)ow=[0-9;]+/\1ow=01;34/' <<<$LS_COLORS)"
 fi
 
+export LS_COLORS
+
 if [[ -n $is_bsd_like ]]; then
-    export LSCOLORS=ExGxFxdaCxDaDahbadacec
+    LSCOLORS=ExGxFxdaCxDaDahbadacec
     if [[ -n $color_term ]]; then
         : ${CLICOLOR=1}
         : ${COLORTERM=1}
         export CLICOLOR
         export COLORTERM
     fi
+    export LSCOLORS
 fi
 
 # keyboard shortcuts

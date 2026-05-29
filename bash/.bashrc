@@ -80,20 +80,28 @@ else
     alias lla='ls -Flah'
 fi
 
+# Don't print files with certain extensions in different colors.
+# Specifically, from $LS_COLORS, delete everything after and including the
+# first "*."
+LS_COLORS="$(sed -r 's/\*\..*//' <<<"$LS_COLORS")"
+
 if [ "$IS_WSL" = YES ] && [ -n "$LS_COLORS" ]; then
     # Remove the green background from other-writeable, non-sticky dirs.
     # These are too common on WSL for the green background to be useful
-    export LS_COLORS="$(sed -r 's/(^|:)ow=[0-9;]+/\1ow=01;34/' <<<$LS_COLORS)"
+    LS_COLORS="$(sed -r 's/(^|:)ow=[0-9;]+/\1ow=01;34/' <<<$LS_COLORS)"
 fi
 
+export LS_COLORS
+
 if [[ "$IS_BSD_LIKE" = YES ]]; then
-    export LSCOLORS=ExGxFxdaCxDaDahbadacec
+    LSCOLORS=ExGxFxdaCxDaDahbadacec
     if [[ -n "$COLOR_TERM" ]]; then
         : ${CLICOLOR=1}
         : ${COLORTERM=1}
         export CLICOLOR
         export COLORTERM
     fi
+    export LSCOLORS
 fi
 
 # make less more friendly for non-text input files, see lesspipe(1)
@@ -167,6 +175,7 @@ PROMPT_COMMAND=prompt_command
 # cycle through options
 bind '"\t":menu-complete'
 bind '"\e[Z":menu-complete-backward'
+
 export PAGER='less'
 
 # Add Rust stuff to path

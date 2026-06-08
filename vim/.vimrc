@@ -3,8 +3,6 @@ set encoding=utf-8
 
 let mapleader=","
 
-" any time a user .vimrc is loaded, nocompatible is set unless the -C option is
-" given, so we can comment out this option
 set nocompatible
 
 " enable filetype detection
@@ -161,6 +159,8 @@ set wildmode=list:full
 
 " enable mouse control
 set mouse=a
+" make mouse work properly on wide terminal windows
+set ttymouse=sgr
 
 " cursor settings (https://vimhelp.org/term.txt.html)
 " terminal code: use bar cursor in insert mode

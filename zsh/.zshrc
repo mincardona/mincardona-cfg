@@ -166,6 +166,7 @@ alias ping4='ping -c 4'
 alias follow='less --follow-name +F'
 alias followstdin='less +F'
 alias arcan=arcanist
+alias fdu='fdfind -u'
 
 function mkcd {
     mkdir -p $1 && cd $1 && pwd

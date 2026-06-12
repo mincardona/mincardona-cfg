@@ -64,14 +64,25 @@
 
 (setq package-install-upgrade-built-in t)
 
-(add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
-(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/"))
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
-(add-to-list 'package-archives '("nongnu-elpa" . "https://elpa.nongnu.org/nongnu/"))
+(setq package-archives
+      '(("gnu-elpa" . "https://elpa.gnu.org/packages/")
+        ("org" . "https://orgmode.org/elpa/")
+        ("melpa" . "https://melpa.org/packages/")
+        ("melpa-stable" . "https://stable.melpa.org/packages/")
+        ("nongnu-elpa" . "https://elpa.nongnu.org/nongnu/")
+       )
+      package-archive-priorities
+      '(("gnu-elpa" . 10)
+        ("org" . 8)
+        ("melpa" . 6)
+        ("melpa-stable" . 4)
+        ("nongnu-elpa" . 2)
+        ; 0 is lowest priority
+       )
+)
 
 ;; fix gnu elpa connection
-(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+;(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 (package-initialize)
 
 ;; save backup files in the temp directory
@@ -222,34 +233,6 @@
 
 (use-package protobuf-mode)
 
-;(use-package lsp-mode
-;    :commands (lsp lsp-deferred)
-;    :hook (c++-mode . lsp-deferred) (c-mode . lsp-deferred)
-;    :config (setq-default lsp-clients-clangd-executable "clangd10"))
-
-;(use-package lsp-ui
-;    :commands lsp-ui-mode)
-
-;(use-package company
-;  :init
-;  (global-company-mode)
-;  :config
-;  (global-set-key (kbd "C-c c") 'company-manual-begin)
-;  (setq-default company-auto-complete-chars nil)
-;  (setq-default company-selection-wrap-around t)
-;  (setq-default company-idle-delay nil)
-;  ;(company-tng-configure-default)
-;)
-
-;;; (setq company-backends (delete 'company-semantic company-backends))
-
-;(use-package company-lsp
-;    :commands company-lsp)
-
-;(use-package flycheck
-;  :ensure t
-;  :init (global-flycheck-mode))
-
 (use-package vscode-dark-plus-theme
   :config
   (load-theme 'vscode-dark-plus t))
@@ -272,6 +255,8 @@
 ;  (setq-default git-commit-major-mode 'markdown-mode)
 ;)
 
+; https://elpa.nongnu.org/nongnu/git-commit.html
+; For some reason this package is not exposed in the archive-contents manifest
 ;(use-package git-commit
 ;  :config
 ;  (setq-default git-commit-major-mode 'markdown-mode)
@@ -285,7 +270,7 @@
 )
 
 ; assumes no leading zeroes in version number
-(defun find-clang-format (path)
+(defun find-clang-format-at (path)
     (if (file-directory-p path)
     (progn
         (setq cf_max 0)
@@ -308,7 +293,14 @@
     )
 )
 
-(let ((cf_path (find-clang-format "/usr/local/bin")))
+(defun find-clang-format ()
+    (if (eq system-type 'gnu/linux)
+        "/usr/bin/clang-format"
+        (find-clang-format-at "/usr/local/bin")
+    )
+)
+
+(let ((cf_path (find-clang-format)))
      (message "find-clang-format returned %s" cf_path)
      (use-package clang-format
      :config
@@ -377,16 +369,6 @@
         (insert "}")
         (goto-char point-bak)))
 
-(defun mji/scons-git ()
-    "Run scons on the current Git repository"
-    (interactive)
-    (compile "scons -C \"$(git rev-parse --show-toplevel)\""))
-
-(defun mji/scons-git-debug ()
-    "Run scons DEBUG=1 on the current Git repository"
-    (interactive)
-    (compile "scons -C \"$(git rev-parse --show-toplevel)\" DEBUG=1"))
-
 ;;
 ;; Themes
 ;;
@@ -401,7 +383,7 @@
  '(custom-safe-themes
    '("79bc32a7c8da2ca2dd33591df9485258293e0e6e03d0ff4a2403a6882dcfdb2b" default))
  '(package-selected-packages
-   '(ws-butler web-mode vscode-dark-plus-theme verilog-mode use-package tramp soap-client protobuf-mode org mwim markdown-mode lua-mode idlwave google-c-style faceup erc eglot diminish clang-format)))
+   '(ws-butler web-mode vscode-dark-plus-theme protobuf-mode mwim markdown-mode google-c-style diminish clang-format)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
